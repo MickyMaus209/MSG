@@ -1,0 +1,17 @@
+
+
+code comments
+
+
+
+
+
+Finished:
+custom aliases for bungeecord - is ok
+
+
+stopped working on:
+ignored list --> test & and code for bungeecord
+max file size
+tabcompleter --> doesnt work
+maybe able to text via console????

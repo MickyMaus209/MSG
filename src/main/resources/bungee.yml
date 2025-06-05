@@ -1,0 +1,8 @@
+name: Msg
+version: 1.4.3
+description: https://www.spigotmc.org/resources/msg-plugin.80931/
+main: com.mickymaus209.msg.bungeecord.Msg
+author: MickyMaus209
+commands:
+  msg:
+  reply:
