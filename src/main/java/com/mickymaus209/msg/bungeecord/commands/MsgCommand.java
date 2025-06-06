@@ -32,7 +32,7 @@ public class MsgCommand extends CommandBase {
         }
 
         ProxiedPlayer player = (ProxiedPlayer) sender;
-        PlayerData playerData = PlayerData.getPlayerData(player);
+        PlayerData playerData = PlayerData.getPlayerData(player.getUniqueId(), msg);
 
         if (args.length == 1) {
             if (args[0].equalsIgnoreCase("toggle")) {
@@ -104,10 +104,10 @@ public class MsgCommand extends CommandBase {
                         player.sendMessage(msg.getConfigData().getFormatedMessage("can_not_ignore_yourself", player, "%targetName%", args[1], "%senderName%", player.getName()));
                         return;
                     }
-                    if (playerData.hasIgnored(targetUUID.toString()))
+                    if (playerData.hasIgnored(targetUUID))
                         player.sendMessage(msg.getConfigData().getFormatedMessage("player_already_ignored", player, "%targetName%", args[1], "%senderName%", player.getName()));
                     else {
-                        playerData.ignore(targetUUID.toString());
+                        playerData.ignore(targetUUID);
                         player.sendMessage(msg.getConfigData().getFormatedMessage("ignored", player, "%targetName%", args[1], "%senderName%", player.getName()));
                     }
                 }
@@ -124,8 +124,8 @@ public class MsgCommand extends CommandBase {
                 if (targetUUID == null)
                     player.sendMessage(msg.getConfigData().getFormatedMessage("player_not_found", player, "%targetName%", args[1], "%senderName%", player.getName()));
                 else {
-                    if (playerData.hasIgnored(targetUUID.toString())) {
-                        playerData.unIgnore(targetUUID.toString());
+                    if (playerData.hasIgnored(targetUUID)) {
+                        playerData.unIgnore(targetUUID);
                         player.sendMessage(msg.getConfigData().getFormatedMessage("un_ignored", player, "%targetName%", args[1], "%senderName%", player.getName()));
                     } else
                         player.sendMessage(msg.getConfigData().getFormatedMessage("player_is_not_ignored", player, "%targetName%", args[1], "%senderName%", player.getName()));
@@ -241,21 +241,19 @@ public class MsgCommand extends CommandBase {
             return;
         }
 
-        if (playerData.hasIgnored(target.getUniqueId().
-
-                toString())) {
+        if (playerData.hasIgnored(target.getUniqueId())) {
             player.sendMessage(msg.getConfigData().getFormatedMessage("you_ignored_receiver", player, "%targetName%", target.getName(), "%senderName%", player.getName()));
             return;
         }
 
-        PlayerData targetData = PlayerData.getPlayerData(target);
+        PlayerData targetData = PlayerData.getPlayerData(target.getUniqueId(), msg);
 
         if (targetData.isDeactivated()) {
             player.sendMessage(msg.getConfigData().getFormatedMessage("receiver_deactivated", player, "%targetName%", target.getName(), "%senderName%", player.getName()));
             return;
         }
 
-        if (targetData.hasIgnored(player.getUniqueId().toString())) {
+        if (targetData.hasIgnored(player.getUniqueId())) {
             player.sendMessage(msg.getConfigData().getFormatedMessage("receiver_ignored_you", player, "%targetName%", target.getName(), "%senderName%", player.getName()));
             return;
         }

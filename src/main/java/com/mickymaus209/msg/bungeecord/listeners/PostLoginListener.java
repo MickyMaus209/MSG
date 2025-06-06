@@ -27,7 +27,7 @@ public class PostLoginListener implements Listener {
         ProxiedPlayer player = event.getPlayer();
 
         //Loading PlayerData such as IgnoredPlayerList and whether MSG is turned off or not
-        PlayerData playerData = new PlayerData(msg, player);
+        PlayerData playerData = PlayerData.getPlayerData(player.getUniqueId(), msg);
         playerData.loadPlayerData();
 
         if (!msg.getConfigData().isCheckForUpdatesTurnedOn()) {

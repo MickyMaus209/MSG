@@ -2,7 +2,11 @@
 
 code comments
 
+Check if player data works now with uuids -> saving and loading
+-> ignore, toggle
 
+-> Change PlayerData getInstance spigot
+PlayerData auf UUID umstellen spigot
 
 
 

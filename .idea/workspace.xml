@@ -4,74 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e0e605a7-5540-44a0-af77-4a5d2cd03c99" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/discord.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/hotswap_agent.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries-with-intellij-classes.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules/MSG.main.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules/MSG.test.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradlew.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/BungeeCord.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/settings.gradle.kts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/bungeecord/Msg.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/bungeecord/commands/AliasManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/bungeecord/commands/CommandBase.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/bungeecord/commands/MsgCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/bungeecord/commands/ReplyCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/bungeecord/customevents/PlayerRepliedEvent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/bungeecord/customevents/PlayerSendMessageEvent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/bungeecord/data/ConfigData.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/bungeecord/data/CustomFile.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/bungeecord/data/GroupsData.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/bungeecord/data/PlayerData.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/bungeecord/listeners/PlayerDisconnectListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/bungeecord/listeners/PostLoginListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/bungeecord/listeners/TabCompleteListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/bungeecord/registries/CommandRegistry.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/bungeecord/spy/Spy.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/bungeecord/spy/SpyManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/bungeecord/stats/UpdateChecker.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/bungeecord/utils/Utils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/common/GroupFormat.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/common/MsgRegistry.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/common/UUIDFetcher.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/spigot/Msg.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/spigot/commands/CommandBase.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/spigot/commands/MsgCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/spigot/commands/ReplyCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/spigot/customevents/PlayerRepliedEvent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/spigot/customevents/PlayerSendMessageEvent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/spigot/data/ConfigData.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/spigot/data/CustomFile.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/spigot/data/GroupsData.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/spigot/data/PlayerData.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/spigot/listeners/PlayerJoinListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/spigot/listeners/PlayerQuitListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/spigot/listeners/PlayerSendMessageListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/spigot/spy/Spy.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/spigot/spy/SpyManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/spigot/stats/Metrics.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/spigot/stats/UpdateChecker.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/spigot/utils/PlaceholderAPIManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/spigot/utils/Utils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/1.4.3.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/1.4.4" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/bungee.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/plugin.yml" afterDir="false" />
+    <list default="true" id="e0e605a7-5540-44a0-af77-4a5d2cd03c99" name="Default Changelist" comment="Initial">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/bungeecord/commands/MsgCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/bungeecord/commands/MsgCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/bungeecord/commands/ReplyCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/bungeecord/commands/ReplyCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/bungeecord/customevents/PlayerRepliedEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/bungeecord/customevents/PlayerRepliedEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/bungeecord/data/PlayerData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/bungeecord/data/PlayerData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/bungeecord/listeners/PlayerDisconnectListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/bungeecord/listeners/PlayerDisconnectListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/bungeecord/listeners/PostLoginListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/bungeecord/listeners/PostLoginListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/1.4.3.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/1.4.3.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -132,6 +74,12 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "MickyMaus209"
+  }
+}]]></component>
   <component name="GitSEFilterConfiguration">
     <file-type-list>
       <filtered-out-file-type name="LOCAL_BRANCH" />
@@ -146,6 +94,9 @@
     "accountId": "5db4d077-f951-4873-aeaa-83e200bd3263"
   }
 }]]></component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/bungeecord/commands/MsgCommand.java" root0="FORCE_HIGHLIGHTING" />
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -162,6 +113,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "Gradle.MSG [assemble].executor": "Run",
     "Gradle.MSG [build].executor": "Run",
     "Gradle.MSG [clean].executor": "Run",
@@ -169,6 +121,7 @@
     "Gradle.MSG [shadowJar].executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "master",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/jansc/IdeaProjects/MicroGamesBungeeCord",
@@ -324,6 +277,19 @@
       <option name="presentableId" value="Default" />
       <updated>1629321472130</updated>
     </task>
+    <task id="LOCAL-00001" summary="Initial">
+      <option name="closed" value="true" />
+      <created>1749167260407</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1749167260407</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Initial" />
+    <option name="LAST_COMMIT_MESSAGE" value="Initial" />
   </component>
 </project>

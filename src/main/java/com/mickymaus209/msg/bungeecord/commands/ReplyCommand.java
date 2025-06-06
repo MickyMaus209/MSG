@@ -49,21 +49,21 @@ public class ReplyCommand extends CommandBase {
             return;
         }
 
-        PlayerData playerData = PlayerData.getPlayerData(player);
+        PlayerData playerData = PlayerData.getPlayerData(player.getUniqueId(), msg);
 
-        if (playerData.hasIgnored(target.getUniqueId().toString())) {
+        if (playerData.hasIgnored(target.getUniqueId())) {
             player.sendMessage(msg.getConfigData().getFormatedMessage("you_ignored_receiver", player, "%targetName%", target.getName(), "%senderName%", player.getName()));
             return;
         }
 
-        PlayerData targetData = PlayerData.getPlayerData(target);
+        PlayerData targetData = PlayerData.getPlayerData(target.getUniqueId(), msg);
 
         if (targetData.isDeactivated()) {
             player.sendMessage(msg.getConfigData().getFormatedMessage("receiver_deactivated", player, "%targetName%", target.getName(), "%senderName%", player.getName()));
             return;
         }
 
-        if (targetData.hasIgnored(player.getUniqueId().toString())) {
+        if (targetData.hasIgnored(player.getUniqueId())) {
             player.sendMessage(msg.getConfigData().getFormatedMessage("receiver_ignored_you", player, "%targetName%", target.getName(), "%senderName%", player.getName()));
             return;
         }

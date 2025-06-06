@@ -1,6 +1,5 @@
 package com.mickymaus209.msg.bungeecord.customevents;
 
-import net.md_5.bungee.api.chat.TextComponent;
 import net.md_5.bungee.api.connection.ProxiedPlayer;
 import net.md_5.bungee.api.plugin.Event;
 
