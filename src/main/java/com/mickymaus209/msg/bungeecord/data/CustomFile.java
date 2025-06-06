@@ -1,10 +1,10 @@
 package com.mickymaus209.msg.bungeecord.data;
 
 import com.mickymaus209.msg.bungeecord.Msg;
+import net.md_5.bungee.api.ProxyServer;
 import net.md_5.bungee.config.Configuration;
 import net.md_5.bungee.config.ConfigurationProvider;
 import net.md_5.bungee.config.YamlConfiguration;
-import org.bukkit.Bukkit;
 
 import java.io.*;
 import java.util.Map;
@@ -62,7 +62,7 @@ public class CustomFile {
         try {
             ConfigurationProvider.getProvider(YamlConfiguration.class).save(config, file);
         } catch (IOException e) {
-            Bukkit.getLogger().log(Level.SEVERE, "Could not save file " + file.getName());
+            ProxyServer.getInstance().getLogger().log(Level.SEVERE, "Could not save file " + file.getName());
         }
     }
 

@@ -6,7 +6,6 @@ import com.mickymaus209.msg.bungeecord.data.ConfigData;
 import com.mickymaus209.msg.bungeecord.data.GroupsData;
 import com.mickymaus209.msg.bungeecord.data.PlayerData;
 import com.mickymaus209.msg.bungeecord.listeners.PlayerDisconnectListener;
-import com.mickymaus209.msg.bungeecord.listeners.TabCompleteListener;
 import com.mickymaus209.msg.bungeecord.spy.SpyManager;
 import com.mickymaus209.msg.bungeecord.stats.UpdateChecker;
 import com.mickymaus209.msg.bungeecord.commands.AliasManager;

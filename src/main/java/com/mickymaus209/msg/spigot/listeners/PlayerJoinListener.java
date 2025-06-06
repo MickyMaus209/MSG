@@ -24,8 +24,8 @@ public class PlayerJoinListener implements Listener {
     public void onPlayerJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
 
-        //Loading PlayerData such as IgnoredPlayerList and whether MSG is turned off or not
-        PlayerData playerData = new PlayerData(msg, player);
+        //Loading PlayerData such as list of ignored players and whether MSG is turned off or not
+        PlayerData playerData = PlayerData.getPlayerData(player.getUniqueId(), msg);
         playerData.loadPlayerData();
 
         if (!msg.getConfigData().isCheckForUpdatesTurnedOn()) return;

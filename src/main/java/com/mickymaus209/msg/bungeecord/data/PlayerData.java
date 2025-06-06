@@ -29,7 +29,7 @@ public class PlayerData {
     public void loadPlayerData() {
         dataFile = new CustomFile(msg, "/playerData/" + playerUUID.toString() + ".yml");
 
-        deactivated = dataFile.getConfig().getBoolean("deactivated");
+        setDeactivated(dataFile.getConfig().getBoolean("deactivated"));
         setIgnoredPlayers(dataFile.getConfig().getStringList("ignored_players").stream().map(UUID::fromString).collect(Collectors.toList()));
     }
 
@@ -49,7 +49,6 @@ public class PlayerData {
 
     /**
      * Checking if Player has ignored a specific UUID (Player)
-     *
      * @param uuid of player to check
      * @return true if specified player is Ignored
      */
@@ -60,7 +59,6 @@ public class PlayerData {
     /**
      * Ignoring player's private messages
      * Adding UUID of Player to IgnoredList
-     *
      * @param uuid of player to set ignored
      */
     public void ignore(UUID uuid) {
@@ -112,7 +110,7 @@ public class PlayerData {
     }
 
     /**
-     * Getting List<String> (stores UUIDs)
+     * Getting List<UUID> UUIDs of Players
      *
      * @return List of Ignored Players
      */

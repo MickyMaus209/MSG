@@ -4,16 +4,28 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e0e605a7-5540-44a0-af77-4a5d2cd03c99" name="Default Changelist" comment="Initial">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+    <list default="true" id="e0e605a7-5540-44a0-af77-4a5d2cd03c99" name="Default Changelist" comment="Changed ProxiedPlayer in PlayerData.java to UUID and changed the getPlayerData method (getInstance). If instance of PlayerData exist -&gt; get -&gt; if not -&gt; create new">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/spigot/commands/CommandHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/spigot/commands/SubCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/spigot/commands/SubCommandRegistry.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/spigot/commands/subcommands/IgnoreSubCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/spigot/commands/subcommands/InfoSubCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/spigot/commands/subcommands/ReloadSubCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/spigot/commands/subcommands/SpySubCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/spigot/commands/subcommands/ToggleSubCommand.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/bungeecord/commands/MsgCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/bungeecord/commands/MsgCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/bungeecord/commands/ReplyCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/bungeecord/commands/ReplyCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/bungeecord/customevents/PlayerRepliedEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/bungeecord/customevents/PlayerRepliedEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/bungeecord/Msg.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/bungeecord/Msg.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/bungeecord/data/CustomFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/bungeecord/data/CustomFile.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/bungeecord/data/PlayerData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/bungeecord/data/PlayerData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/bungeecord/listeners/PlayerDisconnectListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/bungeecord/listeners/PlayerDisconnectListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/bungeecord/listeners/PostLoginListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/bungeecord/listeners/PostLoginListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/spigot/Msg.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/spigot/Msg.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/spigot/commands/MsgCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/spigot/commands/MsgCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/spigot/commands/ReplyCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/spigot/commands/ReplyCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/spigot/data/PlayerData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/spigot/data/PlayerData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/spigot/listeners/PlayerJoinListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/spigot/listeners/PlayerJoinListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/spigot/listeners/PlayerQuitListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/spigot/listeners/PlayerQuitListener.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/1.4.3.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/1.4.3.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/bungee.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/bungee.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/plugin.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,8 +77,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="FxmlFile" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -74,12 +86,12 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "MickyMaus209"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;MickyMaus209&quot;
   }
-}]]></component>
+}</component>
   <component name="GitSEFilterConfiguration">
     <file-type-list>
       <filtered-out-file-type name="LOCAL_BRANCH" />
@@ -88,12 +100,12 @@
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
   </component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/MickyMaus209/MSG.git",
-    "accountId": "5db4d077-f951-4873-aeaa-83e200bd3263"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/MickyMaus209/MSG.git&quot;,
+    &quot;accountId&quot;: &quot;5db4d077-f951-4873-aeaa-83e200bd3263&quot;
   }
-}]]></component>
+}</component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/bungeecord/commands/MsgCommand.java" root0="FORCE_HIGHLIGHTING" />
   </component>
@@ -107,7 +119,9 @@
   &quot;associatedIndex&quot;: 8
 }</component>
   <component name="ProjectId" id="1wuvpcaHMoXVfI9QdMK4H29Io4H" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
@@ -121,6 +135,7 @@
     "Gradle.MSG [shadowJar].executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "master",
     "kotlin-language-version-configured": "true",
@@ -136,9 +151,13 @@
       <recent name="C:\Users\jansc\IdeaProjects\MSG\libs" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\jansc\IdeaProjects\MSG\src\main\java\com\mickymaus209\msg\spigot\commands" />
       <recent name="C:\Users\jansc\IdeaProjects\MSG\libs" />
       <recent name="C:\Users\janbu\IdeaProjects\MSG\libs" />
       <recent name="C:\Users\janbu\IdeaProjects\MSG\gradle" />
+    </key>
+    <key name="MoveMembersDialog.RECENTS_KEY">
+      <recent name="com.mickymaus209.msg.spigot.commands.CommandHandler" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="com.mickymaus209.msg.common" />
@@ -285,11 +304,20 @@
       <option name="project" value="LOCAL" />
       <updated>1749167260407</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Changed ProxiedPlayer in PlayerData.java to UUID and changed the getPlayerData method (getInstance). If instance of PlayerData exist -&gt; get -&gt; if not -&gt; create new">
+      <option name="closed" value="true" />
+      <created>1749169918318</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1749169918318</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Initial" />
-    <option name="LAST_COMMIT_MESSAGE" value="Initial" />
+    <MESSAGE value="Changed ProxiedPlayer in PlayerData.java to UUID and changed the getPlayerData method (getInstance). If instance of PlayerData exist -&gt; get -&gt; if not -&gt; create new" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changed ProxiedPlayer in PlayerData.java to UUID and changed the getPlayerData method (getInstance). If instance of PlayerData exist -&gt; get -&gt; if not -&gt; create new" />
   </component>
 </project>

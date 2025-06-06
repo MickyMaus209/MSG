@@ -1,5 +1,6 @@
 package com.mickymaus209.msg.spigot;
 
+import com.mickymaus209.msg.spigot.commands.CommandHandler;
 import com.mickymaus209.msg.spigot.commands.MsgCommand;
 import com.mickymaus209.msg.spigot.commands.ReplyCommand;
 import com.mickymaus209.msg.spigot.data.ConfigData;
@@ -21,6 +22,7 @@ public class Msg extends JavaPlugin {
     private UpdateChecker updateChecker;
     private GroupsData groupsData;
     private SpyManager spyManager;
+    private CommandHandler commandHandler;
 
     @Override
     public void onEnable() {
@@ -42,6 +44,8 @@ public class Msg extends JavaPlugin {
         groupsData = new GroupsData(this);
 
         spyManager = new SpyManager(this);
+
+        commandHandler = new CommandHandler(this);
 
         new MsgCommand(this, "msg");
         new ReplyCommand(this, "reply");
@@ -65,5 +69,9 @@ public class Msg extends JavaPlugin {
 
     public SpyManager getSpyManager() {
         return spyManager;
+    }
+
+    public CommandHandler getCommandHandler() {
+        return commandHandler;
     }
 }

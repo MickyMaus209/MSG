@@ -1,12 +1,9 @@
 
+INTERNAL CHANGES:
 
 code comments
-
-Check if player data works now with uuids -> saving and loading
--> ignore, toggle
-
--> Change PlayerData getInstance spigot
-PlayerData auf UUID umstellen spigot
+Clean up Code
+-> CommandHandler für spigot and bungeecord
 
 
 

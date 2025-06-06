@@ -19,7 +19,7 @@ public class PlayerQuitListener implements Listener {
     @EventHandler
     public void onPlayerQuit(PlayerQuitEvent event) {
         Player player = event.getPlayer();
-        PlayerData playerData = PlayerData.getPlayerData(player);
+        PlayerData playerData = PlayerData.getPlayerData(player.getUniqueId(), msg);
         playerData.savePlayerData();
         msg.getSpyManager().removePlayer(player);
     }

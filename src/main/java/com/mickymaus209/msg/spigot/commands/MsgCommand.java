@@ -29,11 +29,67 @@ public class MsgCommand extends CommandBase {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (!(sender instanceof Player)) {
             sender.sendMessage("This command can not be used by " + sender.getName());
+            return false;
+        }
+
+        Player player = (Player) sender;
+
+        if (args.length == 0) {
+            player.sendMessage(msg.getConfigData().getFormatedMessage("msg_usage", player, "%command%", "/" + label));
+            return false;
+        }
+
+        String subCommandKey = args[0].toLowerCase();
+        SubCommand subCommand = SubCommandRegistry.getSubCommandMap().get(subCommandKey);
+        if (subCommand != null)
+            subCommand.execute(player, args, label);
+        else
+            handlePrivateMessage(player, args, label); //--> put in this class
+
+
+       /* CommandHandler commandHandler = msg.getCommandHandler();
+        PlayerData playerData = PlayerData.getPlayerData(player.getUniqueId(), msg);
+
+        switch (subCommand) {
+            case "toggle":
+                commandHandler.handleToggle(player, playerData);
+                break;
+            case "reload":
+                commandHandler.handleReload(player);
+                break;
+            case "info":
+                commandHandler.handleInfo(player);
+                break;
+            case "spy":
+            case "unspy":
+                commandHandler.handleSpy(player, args, label, subCommand);
+                break;
+            case "ignore":
+            case "block":
+            case "mute":
+            case "unignore":
+            case "unblock":
+            case "unmute":
+                commandHandler.handleIgnore(player, playerData, args, label, subCommand);
+                break;
+            default:
+                commandHandler.handlePrivateMessage(player, playerData, args, label);
+                break;
+        }
+        */
+
+        return false;
+    }
+
+  /*  @Override
+    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+        if (!(sender instanceof Player)) {
+            sender.sendMessage("This command can not be used by " + sender.getName());
 
             return false;
         }
         Player player = (Player) sender;
-        PlayerData playerData = PlayerData.getPlayerData(player);
+        PlayerData playerData = PlayerData.getPlayerData(player.getUniqueId(), msg);
 
         if (args.length == 1) {
             if (args[0].equalsIgnoreCase("toggle")) {
@@ -78,7 +134,7 @@ public class MsgCommand extends CommandBase {
                 return false;
             }
                 This feature is not in the final version because it would result in too many requests on the mojang api by getting playerNames through UUIDs
-            */
+
             } else if (args[0].equalsIgnoreCase("info")) {
                 player.sendMessage(ChatColor.AQUA + Utils.center("MSG Plugin\n", 70));
                 player.sendMessage("§rDeveloper: §aMickyMaus209\n" +
@@ -113,10 +169,10 @@ public class MsgCommand extends CommandBase {
                         player.sendMessage(msg.getConfigData().getFormatedMessage("can_not_ignore_yourself", player, "%targetName%", args[1]));
                         return;
                     }
-                    if (playerData.hasIgnored(targetUUID.toString()))
+                    if (playerData.hasIgnored(targetUUID))
                         player.sendMessage(msg.getConfigData().getFormatedMessage("player_already_ignored", player, "%targetName%", args[1]));
                     else {
-                        playerData.ignore(targetUUID.toString());
+                        playerData.ignore(targetUUID);
                         player.sendMessage(msg.getConfigData().getFormatedMessage("ignored", player, "%targetName%", args[1]));
                     }
                 }
@@ -133,8 +189,8 @@ public class MsgCommand extends CommandBase {
                 if (targetUUID == null)
                     player.sendMessage(msg.getConfigData().getFormatedMessage("player_is_not_ignored", player, "%targetName%", args[1]));
                 else {
-                    if (playerData.hasIgnored(targetUUID.toString())) {
-                        playerData.unIgnore(targetUUID.toString());
+                    if (playerData.hasIgnored(targetUUID)) {
+                        playerData.unIgnore(targetUUID);
                         player.sendMessage(msg.getConfigData().getFormatedMessage("un_ignored", player, "%targetName%", args[1]));
                     } else
                         player.sendMessage(msg.getConfigData().getFormatedMessage("player_is_not_ignored", player, "%targetName%", args[1]));
@@ -256,19 +312,19 @@ public class MsgCommand extends CommandBase {
             return false;
         }
 
-        if (playerData.hasIgnored(target.getUniqueId().toString())) {
+        if (playerData.hasIgnored(target.getUniqueId())) {
             player.sendMessage(msg.getConfigData().getFormatedMessage("you_ignored_receiver", player, "%targetName%", target.getName()));
             return false;
         }
 
-        PlayerData targetData = PlayerData.getPlayerData(target);
+        PlayerData targetData = PlayerData.getPlayerData(target.getUniqueId(), msg);
 
         if (targetData.isDeactivated()) {
             player.sendMessage(msg.getConfigData().getFormatedMessage("receiver_deactivated", player, "%targetName%", target.getName()));
             return false;
         }
 
-        if (targetData.hasIgnored(player.getUniqueId().toString())) {
+        if (targetData.hasIgnored(player.getUniqueId())) {
             player.sendMessage(msg.getConfigData().getFormatedMessage("receiver_ignored_you", player, "%targetName%", target.getName()));
             return false;
         }
@@ -313,5 +369,85 @@ public class MsgCommand extends CommandBase {
 
         msg.getSpyManager().logSpies(player, target, message);
         return false;
+    }
+
+   */
+
+    public void handlePrivateMessage(Player player, String[] args, String label) {
+        if (!msg.getCommandHandler().checkPermission(player, "msg.use")) return;
+
+        if (args.length < 2) {
+            player.sendMessage(msg.getConfigData().getFormatedMessage("msg_usage", player, "%command%", "/" + label));
+            return;
+        }
+
+        Player target = Bukkit.getPlayer(args[0]);
+
+        if (target == null) {
+            player.sendMessage(msg.getConfigData().getFormatedMessage("player_offline", player));
+            return;
+        }
+
+        if (player.getUniqueId().equals(target.getUniqueId())) {
+            player.sendMessage(msg.getConfigData().getFormatedMessage("target_can_not_be_sender", player, "%targetName%", target.getName()));
+            return;
+        }
+
+        PlayerData playerData = PlayerData.getPlayerData(player.getUniqueId(), msg);
+
+        if (playerData.hasIgnored(target.getUniqueId())) {
+            player.sendMessage(msg.getConfigData().getFormatedMessage("you_ignored_receiver", player, "%targetName%", target.getName()));
+            return;
+        }
+
+        PlayerData targetData = PlayerData.getPlayerData(target.getUniqueId(), msg);
+
+        if (targetData.isDeactivated()) {
+            player.sendMessage(msg.getConfigData().getFormatedMessage("receiver_deactivated", player, "%targetName%", target.getName()));
+            return;
+        }
+
+        if (targetData.hasIgnored(player.getUniqueId())) {
+            player.sendMessage(msg.getConfigData().getFormatedMessage("receiver_ignored_you", player, "%targetName%", target.getName()));
+            return;
+        }
+
+        StringBuilder builder = new StringBuilder();
+        for (int i = 1; i < args.length; i++) {
+            builder.append(args[i]);
+            if (i < args.length - 1)
+                builder.append(" ");
+        }
+
+        String message = builder.toString();
+
+        String playerMsg = msg.getConfigData().getFormatedMessage("sender_message", player,
+                "%targetName%", target.getName(),
+                "%message%", message);
+
+        String targetMsg = msg.getConfigData().getFormatedMessage("receiver_message", player,
+                "%targetName%", target.getName(),
+                "%message%", message);
+
+        if (msg.getGroupsData().isEnabled()) {
+            GroupFormat senderGroupFormat = msg.getGroupsData().findGroupFormat(player);
+            GroupFormat targetGroupFormat = msg.getGroupsData().findGroupFormat(target);
+
+            if (senderGroupFormat != null)
+                playerMsg = msg.getGroupsData().formatMessage(senderGroupFormat.getSenderFormat(), player, "%targetName%", target.getName(), "%message%", message);
+            if (targetGroupFormat != null)
+                targetMsg = msg.getGroupsData().formatMessage(targetGroupFormat.getReceiverFormat(), player, "%targetName%", target.getName(), "%message%", message);
+        }
+
+        player.sendMessage(playerMsg);
+        target.sendMessage(targetMsg);
+
+        MsgRegistry.registerPlayerInteraction(player.getUniqueId(), target.getUniqueId());
+        MsgRegistry.registerPlayerInteraction(target.getUniqueId(), player.getUniqueId());
+
+        PlayerSendMessageEvent playerSendMessageEvent = new PlayerSendMessageEvent(player, target, message);
+        Bukkit.getPluginManager().callEvent(playerSendMessageEvent);
+
+        msg.getSpyManager().logSpies(player, target, message);
     }
 }
