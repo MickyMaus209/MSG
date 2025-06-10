@@ -1,6 +1,7 @@
-package com.mickymaus209.msg.bungeecord.commands;
+package com.mickymaus209.msg.bungeecord.command.commands;
 
 import com.mickymaus209.msg.bungeecord.Msg;
+import com.mickymaus209.msg.bungeecord.command.CommandBase;
 import com.mickymaus209.msg.bungeecord.customevents.PlayerRepliedEvent;
 import com.mickymaus209.msg.bungeecord.customevents.PlayerSendMessageEvent;
 import com.mickymaus209.msg.bungeecord.data.PlayerData;
@@ -14,7 +15,7 @@ import net.md_5.bungee.api.connection.ProxiedPlayer;
 public class ReplyCommand extends CommandBase {
     private final Msg msg;
 
-    public ReplyCommand(String name, Msg msg) {
+    public ReplyCommand(Msg msg, String name) {
         super(msg, name);
         this.msg = msg;
     }

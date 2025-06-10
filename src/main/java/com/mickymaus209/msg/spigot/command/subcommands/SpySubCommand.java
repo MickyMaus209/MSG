@@ -1,8 +1,7 @@
-package com.mickymaus209.msg.spigot.commands.subcommands;
+package com.mickymaus209.msg.spigot.command.subcommands;
 
 import com.mickymaus209.msg.spigot.Msg;
-import com.mickymaus209.msg.spigot.commands.CommandHandler;
-import com.mickymaus209.msg.spigot.commands.SubCommand;
+import com.mickymaus209.msg.spigot.command.SubCommand;
 import com.mickymaus209.msg.spigot.spy.Spy;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;

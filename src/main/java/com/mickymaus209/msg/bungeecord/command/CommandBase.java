@@ -1,4 +1,4 @@
-package com.mickymaus209.msg.bungeecord.commands;
+package com.mickymaus209.msg.bungeecord.command;
 
 import com.mickymaus209.msg.bungeecord.Msg;
 import com.mickymaus209.msg.bungeecord.registries.CommandRegistry;

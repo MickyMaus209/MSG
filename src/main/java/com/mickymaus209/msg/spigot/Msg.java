@@ -1,8 +1,6 @@
 package com.mickymaus209.msg.spigot;
 
-import com.mickymaus209.msg.spigot.commands.CommandHandler;
-import com.mickymaus209.msg.spigot.commands.MsgCommand;
-import com.mickymaus209.msg.spigot.commands.ReplyCommand;
+import com.mickymaus209.msg.spigot.command.CommandHandler;
 import com.mickymaus209.msg.spigot.data.ConfigData;
 import com.mickymaus209.msg.spigot.data.GroupsData;
 import com.mickymaus209.msg.spigot.data.PlayerData;
@@ -46,9 +44,9 @@ public class Msg extends JavaPlugin {
         spyManager = new SpyManager(this);
 
         commandHandler = new CommandHandler(this);
+        commandHandler.registerCommands();
+        commandHandler.registerSubCommands();
 
-        new MsgCommand(this, "msg");
-        new ReplyCommand(this, "reply");
         new Metrics(this, 12516).addCustomChart(new SingleLineChart("online_players", () -> Bukkit.getOnlinePlayers().size()));
         new PlayerJoinListener(this);
         new PlayerQuitListener(this);

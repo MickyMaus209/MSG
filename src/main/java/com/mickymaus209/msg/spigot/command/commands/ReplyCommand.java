@@ -1,8 +1,9 @@
-package com.mickymaus209.msg.spigot.commands;
+package com.mickymaus209.msg.spigot.command.commands;
 
 import com.mickymaus209.msg.common.GroupFormat;
 import com.mickymaus209.msg.common.MsgRegistry;
 import com.mickymaus209.msg.spigot.Msg;
+import com.mickymaus209.msg.spigot.command.CommandBase;
 import com.mickymaus209.msg.spigot.customevents.PlayerRepliedEvent;
 import com.mickymaus209.msg.spigot.customevents.PlayerSendMessageEvent;
 import com.mickymaus209.msg.spigot.data.PlayerData;

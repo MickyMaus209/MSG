@@ -1,7 +1,7 @@
-package com.mickymaus209.msg.spigot.commands.subcommands;
+package com.mickymaus209.msg.spigot.command.subcommands;
 
 import com.mickymaus209.msg.spigot.Msg;
-import com.mickymaus209.msg.spigot.commands.SubCommand;
+import com.mickymaus209.msg.spigot.command.SubCommand;
 import com.mickymaus209.msg.spigot.utils.Utils;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;

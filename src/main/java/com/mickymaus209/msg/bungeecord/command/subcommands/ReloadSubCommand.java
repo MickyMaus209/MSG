@@ -1,10 +1,9 @@
-package com.mickymaus209.msg.spigot.commands.subcommands;
+package com.mickymaus209.msg.bungeecord.command.subcommands;
 
-import com.mickymaus209.msg.spigot.Msg;
-import com.mickymaus209.msg.spigot.commands.CommandHandler;
-import com.mickymaus209.msg.spigot.commands.SubCommand;
-import com.mickymaus209.msg.spigot.data.PlayerData;
-import org.bukkit.entity.Player;
+import com.mickymaus209.msg.bungeecord.Msg;
+import com.mickymaus209.msg.bungeecord.command.SubCommand;
+import com.mickymaus209.msg.bungeecord.data.PlayerData;
+import net.md_5.bungee.api.connection.ProxiedPlayer;
 
 public class ReloadSubCommand implements SubCommand {
     private final Msg msg;
@@ -14,7 +13,7 @@ public class ReloadSubCommand implements SubCommand {
     }
 
     @Override
-    public void execute(Player player, String[] args, String label) {
+    public void execute(ProxiedPlayer player, String[] args, String label) {
         if (!msg.getCommandHandler().checkPermission(player, "msg.reload")) return;
 
         PlayerData.saveAllPlayerData();

@@ -1,21 +1,17 @@
-package com.mickymaus209.msg.spigot.commands;
+package com.mickymaus209.msg.spigot.command.commands;
 
 import com.mickymaus209.msg.common.GroupFormat;
 import com.mickymaus209.msg.common.MsgRegistry;
-import com.mickymaus209.msg.common.UUIDFetcher;
 import com.mickymaus209.msg.spigot.Msg;
+import com.mickymaus209.msg.spigot.command.CommandBase;
+import com.mickymaus209.msg.spigot.command.SubCommand;
+import com.mickymaus209.msg.spigot.command.SubCommandRegistry;
 import com.mickymaus209.msg.spigot.customevents.PlayerSendMessageEvent;
 import com.mickymaus209.msg.spigot.data.PlayerData;
-import com.mickymaus209.msg.spigot.spy.Spy;
-import com.mickymaus209.msg.spigot.utils.Utils;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-
-import java.util.*;
-import java.util.stream.Collectors;
 
 public class MsgCommand extends CommandBase {
     private final Msg msg;
@@ -35,7 +31,7 @@ public class MsgCommand extends CommandBase {
         Player player = (Player) sender;
 
         if (args.length == 0) {
-            player.sendMessage(msg.getConfigData().getFormatedMessage("msg_usage", player, "%command%", "/" + label));
+            player.sendMessage(getMsg().getConfigData().getFormatedMessage("msg_usage", player, "%command%", "/" + label));
             return false;
         }
 
@@ -44,40 +40,7 @@ public class MsgCommand extends CommandBase {
         if (subCommand != null)
             subCommand.execute(player, args, label);
         else
-            handlePrivateMessage(player, args, label); //--> put in this class
-
-
-       /* CommandHandler commandHandler = msg.getCommandHandler();
-        PlayerData playerData = PlayerData.getPlayerData(player.getUniqueId(), msg);
-
-        switch (subCommand) {
-            case "toggle":
-                commandHandler.handleToggle(player, playerData);
-                break;
-            case "reload":
-                commandHandler.handleReload(player);
-                break;
-            case "info":
-                commandHandler.handleInfo(player);
-                break;
-            case "spy":
-            case "unspy":
-                commandHandler.handleSpy(player, args, label, subCommand);
-                break;
-            case "ignore":
-            case "block":
-            case "mute":
-            case "unignore":
-            case "unblock":
-            case "unmute":
-                commandHandler.handleIgnore(player, playerData, args, label, subCommand);
-                break;
-            default:
-                commandHandler.handlePrivateMessage(player, playerData, args, label);
-                break;
-        }
-        */
-
+            handlePrivateMessage(player, args, label);
         return false;
     }
 

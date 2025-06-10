@@ -1,7 +1,7 @@
 package com.mickymaus209.msg.spigot.data;
 
 import com.mickymaus209.msg.spigot.Msg;
-import com.mickymaus209.msg.spigot.commands.CommandBase;
+import com.mickymaus209.msg.spigot.command.CommandBase;
 import com.mickymaus209.msg.spigot.utils.PlaceholderAPIManager;
 import com.mickymaus209.msg.spigot.utils.Utils;
 import me.clip.placeholderapi.PlaceholderAPI;
@@ -187,7 +187,7 @@ public class ConfigData {
      * This method is used to get data from the configData map which was previously filled with the data set in config.
      *
      * @param key is required to find the values in the configData. Keys are matching with config keys as the map got its keys & values from the config.
-     * @return
+     * @return object that is set in configData map
      */
     public Object getData(String key) {
         return configData.get(key);

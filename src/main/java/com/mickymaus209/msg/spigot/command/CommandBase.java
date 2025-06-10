@@ -1,4 +1,4 @@
-package com.mickymaus209.msg.spigot.commands;
+package com.mickymaus209.msg.spigot.command;
 
 import com.mickymaus209.msg.spigot.Msg;
 import com.mickymaus209.msg.spigot.utils.Utils;

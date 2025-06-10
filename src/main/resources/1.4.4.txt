@@ -2,8 +2,9 @@
 INTERNAL CHANGES:
 
 code comments
+
 Clean up Code
--> CommandHandler für spigot and bungeecord
+-> CommandHandler für spigot and bungeecord testen
 
 
 
