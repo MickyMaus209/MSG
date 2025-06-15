@@ -111,7 +111,7 @@ public class PlayerData implements Data {
     }
 
     /**
-     * Getting List<UUID> UUIDs of Players
+     * Getting {@link List} UUIDs of Players
      *
      * @return List of Ignored Players
      */
@@ -133,16 +133,5 @@ public class PlayerData implements Data {
     }
 
     @Override
-    public void onFileCreate() {
-
-    }
-
-    /*private List<UUID> convertStringListToUUIDList(List<String> uuidsAsStringList) {
-        List<UUID> uuidList = new ArrayList<>();
-        for (String uuid : uuidsAsStringList)
-            uuidList.add(UUID.fromString(uuid));
-        return uuidList;
-    }
-
-     */
+    public void onFileCreate() {}
 }

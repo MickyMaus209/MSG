@@ -67,7 +67,7 @@ public class ConfigData implements Data {
         defaultData.put("spying_list", "%prefix% &aYou are currently spying the following players &c%spy_list%");
         defaultData.put("can_not_spy_yourself", "%prefix% &cYou cannot spy yourself.");
         defaultData.put("already_spying_player", "%prefix% &cYou are already spying &a%targetName%");
-        defaultData.put("already_spying_everyone", "%prefix% &cYou are currently not spying anyone.");
+        defaultData.put("already_spying_everyone", "%prefix% &cYou are already spying everyone.");
         defaultData.put("not_spying_anyone", "%prefix% &cYou are currently not spying anyone.");
         defaultData.put("not_spying_player", "%prefix% &cYou are currently not spying &a%targetName%");
         defaultData.put("spy_activated_player", "%prefix% &aYou are now spying private messages from &c%targetName%");

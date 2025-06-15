@@ -4,13 +4,9 @@ INTERNAL CHANGES:
 code comments
 
 
-check if spy works - bungeecord
-check if all subcommands work on spigot
-check if data is only set on create (spigot)
 
 
-
-Finished:
+Could be improved:
 custom aliases for bungeecord - is ok
 
 

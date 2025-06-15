@@ -78,6 +78,10 @@ public class SpySubCommand implements SubCommand {
                 }
 
                 if (subCommand.equalsIgnoreCase("spy")) {
+                    if (spy.isSpyAll()) {
+                        player.sendMessage(msg.getConfigData().getFormatedMessage("already_spying_everyone", player));
+                        return;
+                    }
                     if (spy.isSpying(targetPlayer))
                         player.sendMessage(msg.getConfigData().getFormatedMessage("already_spying_player", player, "%targetName%", args[1]));
                     else {

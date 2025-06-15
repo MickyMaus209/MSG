@@ -2,10 +2,8 @@ package com.mickymaus209.msg.spigot.listeners;
 
 import com.mickymaus209.msg.spigot.Msg;
 import com.mickymaus209.msg.spigot.data.PlayerData;
-import net.md_5.bungee.api.chat.ClickEvent;
-import net.md_5.bungee.api.chat.HoverEvent;
+import com.mickymaus209.msg.spigot.utils.Utils;
 import net.md_5.bungee.api.chat.TextComponent;
-import net.md_5.bungee.api.chat.hover.content.Text;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -42,9 +40,7 @@ public class PlayerJoinListener implements Listener {
 
         String buttonText = msg.getConfigData().getFormatedMessage("update_download_button", player);
 
-        TextComponent updateButton = new TextComponent(buttonText);
-        updateButton.setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, msg.getDescription().getDescription()));
-        updateButton.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new Text("§7Open link")));
+        TextComponent updateButton = Utils.getClickAbleUrlMessage(buttonText, msg.getDescription().getDescription(), "§7Open link");
 
        player.sendMessage(updateNotify);
        player.spigot().sendMessage(updateButton);

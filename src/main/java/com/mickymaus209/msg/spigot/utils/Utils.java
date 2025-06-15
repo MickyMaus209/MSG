@@ -1,6 +1,10 @@
 package com.mickymaus209.msg.spigot.utils;
 
 import com.mickymaus209.msg.spigot.Msg;
+import net.md_5.bungee.api.chat.ClickEvent;
+import net.md_5.bungee.api.chat.HoverEvent;
+import net.md_5.bungee.api.chat.TextComponent;
+import net.md_5.bungee.api.chat.hover.content.Text;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Sound;
@@ -41,6 +45,13 @@ public class Utils {
     }
     */
 
+    public static TextComponent getClickAbleUrlMessage(String text, String url, String hoverText){
+        TextComponent textComponent = new TextComponent(text);
+        textComponent.setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, url));
+        textComponent.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new Text(hoverText)));
+        return textComponent;
+    }
+
     public static void registerAliases(List<String> aliases, CommandExecutor executor, JavaPlugin plugin) {
         try {
             Constructor<PluginCommand> constructor = PluginCommand.class.getDeclaredConstructor(String.class, Plugin.class);
@@ -56,7 +67,8 @@ public class Utils {
                 commandMap.register(plugin.getDescription().getName(), command);
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            System.err.println("[MSG] Aliases for " + executor.getClass().getName() + " could not be registered.");
+            System.err.println("[MSG] The following aliases could not be registered: " + aliases);
         }
     }
 
@@ -69,6 +81,7 @@ public class Utils {
         }
     }
 
+    @SuppressWarnings("SameParameterValue")
     private static String formatLeftAligned(String key, String value, int totalWidth, int keyWidth) {
         String paddedKey = key + repeat(" ", Math.max(0, keyWidth - key.length()));
         String line = " " + paddedKey + value;

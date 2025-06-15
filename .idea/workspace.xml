@@ -4,18 +4,31 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e0e605a7-5540-44a0-af77-4a5d2cd03c99" name="Default Changelist" comment="External BungeeCord.jar removed (unnecessary)">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/common/Data.java" afterDir="false" />
+    <list default="true" id="e0e605a7-5540-44a0-af77-4a5d2cd03c99" name="Default Changelist" comment="Fixed Spy not working &amp; Improved InfoSubCommand &amp; Added Docs">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/bungeecord/command/commands/MsgCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/bungeecord/command/commands/MsgCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/bungeecord/command/CommandBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/bungeecord/command/CommandBase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/bungeecord/command/CommandHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/bungeecord/command/CommandHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/bungeecord/command/SubCommandRegistry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/bungeecord/command/SubCommandRegistry.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/bungeecord/command/subcommands/InfoSubCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/bungeecord/command/subcommands/InfoSubCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/bungeecord/command/subcommands/SpySubCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/bungeecord/command/subcommands/SpySubCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/bungeecord/customevents/PlayerRepliedEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/bungeecord/customevents/PlayerRepliedEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/bungeecord/customevents/PlayerSendMessageEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/bungeecord/customevents/PlayerSendMessageEvent.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/bungeecord/data/ConfigData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/bungeecord/data/ConfigData.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/bungeecord/data/CustomFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/bungeecord/data/CustomFile.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/bungeecord/data/GroupsData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/bungeecord/data/GroupsData.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/bungeecord/data/PlayerData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/bungeecord/data/PlayerData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/bungeecord/listeners/PlayerDisconnectListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/bungeecord/listeners/PlayerDisconnectListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/bungeecord/listeners/PostLoginListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/bungeecord/listeners/PostLoginListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/bungeecord/listeners/TabCompleteListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/bungeecord/listeners/TabCompleteListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/bungeecord/registries/CommandRegistry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/bungeecord/registries/CommandRegistry.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/bungeecord/spy/SpyManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/bungeecord/spy/SpyManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/bungeecord/utils/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/bungeecord/utils/Utils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/spigot/command/subcommands/InfoSubCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/spigot/command/subcommands/InfoSubCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/spigot/command/subcommands/SpySubCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/spigot/command/subcommands/SpySubCommand.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/spigot/data/ConfigData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/spigot/data/ConfigData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/spigot/data/CustomFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/spigot/data/CustomFile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/spigot/data/GroupsData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/spigot/data/GroupsData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/spigot/data/PlayerData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/spigot/data/PlayerData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/spigot/listeners/PlayerJoinListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/spigot/listeners/PlayerJoinListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/spigot/spy/SpyManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/spigot/spy/SpyManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/spigot/utils/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mickymaus209/msg/spigot/utils/Utils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/1.4.4.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/1.4.4.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -327,7 +340,15 @@
       <option name="project" value="LOCAL" />
       <updated>1749581925004</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Fixed GroupsData default data &amp; MSG Command Bug in BungeeCord">
+      <option name="closed" value="true" />
+      <created>1749996810549</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1749996810549</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -335,6 +356,8 @@
     <MESSAGE value="Changed ProxiedPlayer in PlayerData.java to UUID and changed the getPlayerData method (getInstance). If instance of PlayerData exist -&gt; get -&gt; if not -&gt; create new" />
     <MESSAGE value="Command cleanup" />
     <MESSAGE value="External BungeeCord.jar removed (unnecessary)" />
-    <option name="LAST_COMMIT_MESSAGE" value="External BungeeCord.jar removed (unnecessary)" />
+    <MESSAGE value="Fixed GroupsData default data &amp; MSG Command Bug in BungeeCord" />
+    <MESSAGE value="Fixed Spy not working &amp; Improved InfoSubCommand &amp; Added Docs" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed Spy not working &amp; Improved InfoSubCommand &amp; Added Docs" />
   </component>
 </project>

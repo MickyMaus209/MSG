@@ -1,14 +1,10 @@
 package com.mickymaus209.msg.bungeecord.listeners;
 
 import com.mickymaus209.msg.bungeecord.Msg;
-import com.mickymaus209.msg.bungeecord.customevents.PlayerRepliedEvent;
-import com.mickymaus209.msg.bungeecord.customevents.PlayerSendMessageEvent;
 import com.mickymaus209.msg.bungeecord.data.PlayerData;
+import com.mickymaus209.msg.bungeecord.utils.Utils;
 import net.md_5.bungee.api.ProxyServer;
-import net.md_5.bungee.api.chat.ClickEvent;
-import net.md_5.bungee.api.chat.HoverEvent;
 import net.md_5.bungee.api.chat.TextComponent;
-import net.md_5.bungee.api.chat.hover.content.Text;
 import net.md_5.bungee.api.connection.ProxiedPlayer;
 import net.md_5.bungee.api.event.PostLoginEvent;
 import net.md_5.bungee.api.plugin.Listener;
@@ -22,6 +18,11 @@ public class PostLoginListener implements Listener {
         ProxyServer.getInstance().getPluginManager().registerListener(msg, this);
     }
 
+    /**
+     * Event is called when Player is logging in on ProxyServer
+     * Used to load player data from File into RAM
+     * Sending Player update notify
+     */
     @EventHandler
     public void onPlayerJoin(PostLoginEvent event) {
         ProxiedPlayer player = event.getPlayer();
@@ -30,6 +31,7 @@ public class PostLoginListener implements Listener {
         PlayerData playerData = PlayerData.getPlayerData(player.getUniqueId(), msg);
         playerData.loadPlayerData();
 
+        //Checking for update and sending player update notify
         if (!msg.getConfigData().isCheckForUpdatesTurnedOn()) {
             return;
         }
@@ -41,9 +43,11 @@ public class PostLoginListener implements Listener {
         String currentVersion = msg.getUpdateChecker().getCurrentVersion(),
                 latestVersion = msg.getUpdateChecker().getLatestVersion();
 
-        TextComponent updateButton = msg.getConfigData().getFormatedMessage("update_download_button", player);
-        updateButton.setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, msg.getDescription().getDescription()));
-        updateButton.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new Text("§7Open link")));
+        TextComponent updateButton = Utils.getClickAbleUrlMessage(
+                msg.getConfigData().getFormatedMessage("update_download_button", player).toString(),
+                msg.getDescription().getDescription(), "§7Open link");
+                msg.getConfigData().getFormatedMessage("update_download_button", player);
+
 
         player.sendMessage(msg.getConfigData().getFormatedMessage("update_notify", player,
                 "%currentVersion%", currentVersion,

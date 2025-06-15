@@ -8,6 +8,12 @@ public class PlayerSendMessageEvent extends Event {
     private final ProxiedPlayer receiver;
     private final String message;
 
+    /**
+     * This event is called when a player sends a private message
+     * @param sender - sender of private message
+     * @param receiver - receiver of private message
+     * @param message - sent message
+     */
     public PlayerSendMessageEvent(ProxiedPlayer sender, ProxiedPlayer receiver, String message){
         this.sender = sender;
         this.receiver = receiver;
@@ -22,6 +28,7 @@ public class PlayerSendMessageEvent extends Event {
         return sender;
     }
 
+    @SuppressWarnings("unused")
     public ProxiedPlayer getReceiver() {
         return receiver;
     }

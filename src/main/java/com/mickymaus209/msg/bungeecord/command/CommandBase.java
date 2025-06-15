@@ -10,7 +10,7 @@ public abstract class CommandBase extends Command {
     private final Msg msg;
 
     /**
-     * Registering command in BungeeCord API, registering Command in CommandRegistry and registering all aliases for this command.
+     * Registering command in BungeeCord API, registering Command in {@link CommandRegistry} and registering all aliases for this command.
      * @param msg JavaPlugin main object
      * @param name - command name for execution
      */

@@ -8,6 +8,12 @@ public class PlayerRepliedEvent extends Event {
     private final ProxiedPlayer receiver;
     private final String message;
 
+    /**
+     * This event is called when a player replies on a private message using {@link com.mickymaus209.msg.bungeecord.command.commands.ReplyCommand}
+     * @param sender - sender of reply
+     * @param receiver - receiver of reply
+     * @param message - message that is replied
+     */
     public PlayerRepliedEvent(ProxiedPlayer sender, ProxiedPlayer receiver, String message) {
         this.sender = sender;
         this.receiver = receiver;
@@ -18,6 +24,7 @@ public class PlayerRepliedEvent extends Event {
         return message;
     }
 
+    @SuppressWarnings("unused")
     public ProxiedPlayer getReceiver() {
         return receiver;
     }

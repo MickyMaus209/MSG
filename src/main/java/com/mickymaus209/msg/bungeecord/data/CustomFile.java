@@ -27,8 +27,9 @@ public class CustomFile {
     /**
      * Setting up file
      * Creating all necessary dirs to create file and ultimately creating the file
-     * Initializing Bukkit#Configuration
+     * Initializing {@link Configuration}
      */
+    @SuppressWarnings("ResultOfMethodCallIgnored")
     protected void setup() {
         boolean newFile = false;
         if (!msg.getDataFolder().exists())
@@ -56,14 +57,14 @@ public class CustomFile {
     }
 
     /**
-     * @return the Bukkit#Configuration which got useful methods such as get, set, contains...
+     * @return the {@link Configuration} which got useful methods such as get, set, contains...
      */
     protected Configuration getConfig() {
         return config;
     }
 
     /**
-     * Saving file using Bukkit#Configuration
+     * Saving file using {@link Configuration}
      */
     protected void save() {
         try {
@@ -74,7 +75,7 @@ public class CustomFile {
     }
 
     /**
-     * Reloading file using Bukkit#Configuration
+     * Reloading file using {@link Configuration}
      */
     protected void reload() {
         try {
@@ -104,16 +105,10 @@ public class CustomFile {
      * @param key   default key to be set
      * @param value default value to be set
      */
+    @SuppressWarnings("unused")
     protected void addDefault(String key, Object value) {
         if (config.contains(key)) return;
         config.set(key, value);
         save();
-    }
-
-    /**
-     * @return - the actual Java file object
-     */
-    protected File getFile() {
-        return file;
     }
 }

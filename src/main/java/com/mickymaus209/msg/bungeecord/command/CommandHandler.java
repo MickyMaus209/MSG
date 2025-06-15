@@ -13,11 +13,17 @@ public class CommandHandler {
         this.msg = msg;
     }
 
+    /**
+     * Registering all commands
+     */
     public void registerCommands(){
         new MsgCommand(msg, "msg");
         new ReplyCommand(msg, "reply");
     }
 
+    /**
+     * Registering all sub commands
+     */
     public void registerSubCommands(){
         SubCommandRegistry.register("toggle", new ToggleSubCommand(msg));
         SubCommandRegistry.register("ignore", new IgnoreSubCommand(msg), "mute", "block", "unblock", "unmute", "unignore");
@@ -26,6 +32,12 @@ public class CommandHandler {
         SubCommandRegistry.register("info", new InfoSubCommand(msg));
     }
 
+    /**
+     * Check if player has permission and send him message if they don't
+     * @param player - to be checked for permission
+     * @param permissionKey - actual permission to check
+     * @return - boolean true if player has permission and false if they don't
+     */
     public boolean checkPermission(ProxiedPlayer player, String permissionKey) {
         if (!player.hasPermission(permissionKey)) {
             player.sendMessage(msg.getConfigData().getFormatedMessage("no_permission", player));

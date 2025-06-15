@@ -16,6 +16,7 @@ import java.util.stream.Collectors;
 public class TabCompleteListener implements Listener {
     private final Msg msg;
 
+    //THIS IS CURRENTLY NOT USED DUE TO BUGS
     public TabCompleteListener(Msg msg) {
         this.msg = msg;
         ProxyServer.getInstance().getPluginManager().registerListener(msg, this);

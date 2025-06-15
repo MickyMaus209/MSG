@@ -16,6 +16,11 @@ public class PlayerDisconnectListener implements Listener {
         ProxyServer.getInstance().getPluginManager().registerListener(msg, this);
     }
 
+    /**
+     * Event is called when Player disconnects ProxyServer
+     * Used to save player data from RAM into file
+     * Removing player from possible Spying to avoid interceptions
+     */
     @EventHandler
     public void onPlayerDisconnect(PlayerDisconnectEvent event) {
         ProxiedPlayer player = event.getPlayer();

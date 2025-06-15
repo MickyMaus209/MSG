@@ -3,7 +3,10 @@ package com.mickymaus209.msg.bungeecord.utils;
 import com.mickymaus209.msg.bungeecord.Msg;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.ProxyServer;
+import net.md_5.bungee.api.chat.ClickEvent;
+import net.md_5.bungee.api.chat.HoverEvent;
 import net.md_5.bungee.api.chat.TextComponent;
+import net.md_5.bungee.api.chat.hover.content.Text;
 
 public class Utils {
 
@@ -31,6 +34,12 @@ public class Utils {
     }
     */
 
+    public static TextComponent getClickAbleUrlMessage(String text, String url, String hoverText) {
+        TextComponent textComponent = new TextComponent(text);
+        textComponent.setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, url));
+        textComponent.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new Text(hoverText)));
+        return textComponent;
+    }
 
         public static void sendConsoleMessage (String message){
             ProxyServer.getInstance().getConsole().sendMessage(new TextComponent(message));

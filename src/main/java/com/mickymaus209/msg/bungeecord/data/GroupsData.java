@@ -31,7 +31,7 @@ public class GroupsData implements Data {
 
     /**
      * Setting up default data which is set when key is missing
-     * defaultDataMAp is used to save all default keys and values that are set by default
+     * defaultDataMap is used to save all default keys and values that are set by default
      */
     private void setDefaults(){
         Map<String, Object> defaultDataMap = new LinkedHashMap<>();
@@ -59,7 +59,7 @@ public class GroupsData implements Data {
 
     /**
      * Loading the groups sections from the file.
-     * If group section was found, a GroupFormat object will be created and added to a List<GroupFormat>
+     * If group section was found, a {@link GroupFormat} object will be created and added to a {@link List}
      */
     public void loadGroupFormats() {
         isEnabled = file.getConfig().getBoolean("enabled");
@@ -79,7 +79,7 @@ public class GroupsData implements Data {
     }
 
     /**
-     * Finding the corresponding format for a player
+     * Finding the corresponding format for a {@link ProxiedPlayer}
      * @param player - player to find the group format for
      * @return GroupFormat object which stores all necessary information about the format.
      */
@@ -139,7 +139,7 @@ public class GroupsData implements Data {
     }
 
     /**
-     * Reloading group formats including file, list of Group Formats and loading Group formats again out of config
+     * Reloading group formats including {@link CustomFile}, {@link List} of {@link GroupFormat} and loading Group formats again out of config
      */
     public void reload() {
         file.reload();

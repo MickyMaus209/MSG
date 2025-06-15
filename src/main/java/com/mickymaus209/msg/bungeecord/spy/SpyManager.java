@@ -18,12 +18,14 @@ public class SpyManager {
                     "%targetName%", receiver.getName(),
                     "%message%", rawMessage);
 
-            if (spy.isSpyAll() && !spy.getPlayer().equals(sender) && !spy.getPlayer().equals(receiver)) {
+            if(spy.getPlayer().getUniqueId().equals(sender.getUniqueId()) || spy.getPlayer().getUniqueId().equals(receiver.getUniqueId())) continue;
+
+            if (spy.isSpyAll()) {
                 spy.getPlayer().sendMessage(spyMessage);
                 continue;
             }
 
-            if ((!spy.isSpying(sender) && !spy.isSpying(receiver)) || (spy.getPlayer().equals(sender) || spy.getPlayer().equals(receiver))) return;
+            if (!spy.isSpying(sender) && !spy.isSpying(receiver)) continue;
             spy.getPlayer().sendMessage(spyMessage);
         }
     }

@@ -56,7 +56,7 @@ public class ConfigData implements Data {
         defaultConfigData.put("spying_list", "%prefix% &aYou are currently spying the following players &c%spy_list%");
         defaultConfigData.put("can_not_spy_yourself", "%prefix% &cYou cannot spy yourself.");
         defaultConfigData.put("already_spying_player", "%prefix% &cYou are already spying &a%targetName%");
-        defaultConfigData.put("already_spying_everyone", "%prefix% &cYou are currently not spying anyone.");
+        defaultConfigData.put("already_spying_everyone", "%prefix% &cYou are already spying everyone.");
         defaultConfigData.put("not_spying_anyone", "%prefix% &cYou are currently not spying anyone.");
         defaultConfigData.put("not_spying_player", "%prefix% &cYou are currently not spying &a%targetName%");
         defaultConfigData.put("spy_activated_player", "%prefix% &aYou are now spying private messages from &c%targetName%");
@@ -94,7 +94,7 @@ public class ConfigData implements Data {
 
     /**
      * Loading modified data from config into Map (RAM).
-     * This method requires Map object. The keys of the map are used to get values of config
+     * This method requires {@link Map} object. The keys of the map are used to get values of config
      *
      * @param data is supposed to be the default data for determining and setting the keys with the data that has been edited in the config.yml
      */
@@ -140,15 +140,10 @@ public class ConfigData implements Data {
     }
 
     /**
-     * Registering all Aliases for all commands.
-     * Commands are saved in a map and aliases are saved in config
-     */
-
-    /**
      * This method is used to get all Aliases for a specific command set in the config.yml
      *
      * @param keyCommand - command to get aliases from
-     * @return - List<String> with all Aliases set in the config (as String list)
+     * @return - {@link List} with all Aliases set in the config (as String list)
      */
     public List<String> getAliasesFromConfig(String keyCommand) {
         String path = "aliases" + "." + keyCommand;
@@ -179,8 +174,8 @@ public class ConfigData implements Data {
 
     /**
      * Getting data from configData Map which stores the data from the config.yml
-     * @param key
-     * @return
+     * @param key - to get value (data) of
+     * @return Object that is set as value for the corresponding key
      */
     public Object getData(String key) {
         return configData.get(key);
@@ -201,7 +196,5 @@ public class ConfigData implements Data {
     }
 
     @Override
-    public void onFileCreate() {
-
-    }
+    public void onFileCreate() {}
 }
