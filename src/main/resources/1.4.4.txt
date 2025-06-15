@@ -3,7 +3,7 @@ INTERNAL CHANGES:
 
 code comments
 
-
+check if Commands and SubCommands work fully (including reload and everything) without CommandBase
 
 
 Could be improved:

@@ -11,10 +11,24 @@ import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ConcurrentHashMap;
 
+/**
+ * Fetches UUIDs for Minecraft player names using the Mojang API.
+ * <p>
+ * Results are cached to reduce API usage and improve performance.
+ */
 public class UUIDFetcher {
     private static final String MOJANG_API_URL = "https://api.mojang.com/users/profiles/minecraft/";
     private static final ConcurrentHashMap<String, UUID> cache = new ConcurrentHashMap<>();
 
+    /**
+     * Asynchronously fetches the UUID for a given player name using Mojang's public API.
+     * <p>
+     * If the UUID is already cached, it returns immediately from memory.
+     * Otherwise, a network request is made
+     *
+     * @param playerName the Minecraft player name
+     * @return a {@link CompletableFuture} containing the {@link UUID}, or {@code null} if not found or an error occurred
+     */
     public static CompletableFuture<UUID> getUUID(String playerName) {
         // Return from cache if available
         if (cache.containsKey(playerName.toLowerCase())) {
@@ -38,7 +52,7 @@ public class UUIDFetcher {
 
                 if (responseCode == 429) {
                     // Too many requests
-                    System.out.println("[MSG] UUIDFetcher has reached its limit! Try again later.");
+                    System.err.println("[MSG] UUIDFetcher has reached its limit! Try again later.");
                     return null;
                 }
 
@@ -59,7 +73,7 @@ public class UUIDFetcher {
                 return uuid;
 
             } catch (Exception e) {
-                System.out.println("[UUIDFetcher] Error fetching UUID: " + e.getMessage());
+                System.err.println("[UUIDFetcher] Error fetching UUID: " + e.getMessage());
                 return null;
             }
         });

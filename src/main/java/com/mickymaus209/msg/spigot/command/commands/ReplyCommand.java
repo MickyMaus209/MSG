@@ -3,21 +3,20 @@ package com.mickymaus209.msg.spigot.command.commands;
 import com.mickymaus209.msg.common.GroupFormat;
 import com.mickymaus209.msg.common.MsgRegistry;
 import com.mickymaus209.msg.spigot.Msg;
-import com.mickymaus209.msg.spigot.command.CommandBase;
 import com.mickymaus209.msg.spigot.customevents.PlayerRepliedEvent;
 import com.mickymaus209.msg.spigot.customevents.PlayerSendMessageEvent;
 import com.mickymaus209.msg.spigot.data.PlayerData;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
+import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-public class ReplyCommand extends CommandBase {
+public class ReplyCommand implements CommandExecutor {
     private final Msg msg;
 
-    public ReplyCommand(Msg msg, String commandName) {
-        super(msg, commandName);
-        this.msg = getMsg();
+    public ReplyCommand(Msg msg) {
+        this.msg = msg;
     }
 
 

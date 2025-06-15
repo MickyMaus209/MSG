@@ -1,4 +1,4 @@
-package com.mickymaus209.msg.bungeecord.registries;
+package com.mickymaus209.msg.bungeecord.command;
 
 import com.mickymaus209.msg.bungeecord.Msg;
 import net.md_5.bungee.api.ProxyServer;
@@ -13,13 +13,13 @@ public class CommandRegistry {
 
     /**
      * Registering commands for {@link Map} and {@link ProxyServer}
-     * @param name - main name of command (used for execution)
      * @param command - Command object for command class
      * @param msg - main class (extends {@link net.md_5.bungee.api.plugin.Plugin})
      */
-    public static void registerCommand(String name, Command command, Msg msg) {
-        COMMANDS.put(name.toLowerCase(), command);
+    public static void registerCommand(Command command, Msg msg) {
+        COMMANDS.put(command.getName(), command);
         ProxyServer.getInstance().getPluginManager().registerCommand(msg, command);
+        msg.getAliasManager().registerAliases(command.getName());
     }
 
     /**

@@ -2,7 +2,7 @@ package com.mickymaus209.msg.bungeecord.listeners;
 
 import com.mickymaus209.msg.bungeecord.Msg;
 import com.mickymaus209.msg.bungeecord.command.commands.MsgCommand;
-import com.mickymaus209.msg.bungeecord.registries.CommandRegistry;
+import com.mickymaus209.msg.bungeecord.command.CommandRegistry;
 import net.md_5.bungee.api.ProxyServer;
 import net.md_5.bungee.api.connection.ProxiedPlayer;
 import net.md_5.bungee.api.event.TabCompleteEvent;

@@ -1,11 +1,10 @@
 package com.mickymaus209.msg.bungeecord.command;
 
 import com.mickymaus209.msg.bungeecord.Msg;
-import com.mickymaus209.msg.bungeecord.registries.CommandRegistry;
-import net.md_5.bungee.api.ProxyServer;
 import net.md_5.bungee.api.plugin.Command;
 
 
+@SuppressWarnings("unused")
 public abstract class CommandBase extends Command {
     private final Msg msg;
 
@@ -17,9 +16,7 @@ public abstract class CommandBase extends Command {
     public CommandBase(Msg msg, String name) {
         super(name);
         this.msg = msg;
-        ProxyServer.getInstance().getPluginManager().registerCommand(msg, this);
-        CommandRegistry.registerCommand(name, this, msg);
-        msg.getAliasManager().registerAliases(name);
+        //CommandRegistry.registerCommand(name, this, msg);
     }
 
     public Msg getMsg() {

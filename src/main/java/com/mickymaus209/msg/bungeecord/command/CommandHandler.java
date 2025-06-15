@@ -16,15 +16,17 @@ public class CommandHandler {
     /**
      * Registering all commands
      */
-    public void registerCommands(){
-        new MsgCommand(msg, "msg");
-        new ReplyCommand(msg, "reply");
+    public void registerCommands() {
+        // new MsgCommand(msg, "msg");
+        //  new ReplyCommand(msg, "reply");
+        CommandRegistry.registerCommand(new MsgCommand(msg, "msg"), msg);
+        CommandRegistry.registerCommand(new ReplyCommand(msg, "reply"), msg);
     }
 
     /**
      * Registering all sub commands
      */
-    public void registerSubCommands(){
+    public void registerSubCommands() {
         SubCommandRegistry.register("toggle", new ToggleSubCommand(msg));
         SubCommandRegistry.register("ignore", new IgnoreSubCommand(msg), "mute", "block", "unblock", "unmute", "unignore");
         SubCommandRegistry.register("spy", new SpySubCommand(msg), "unspy");
@@ -34,7 +36,8 @@ public class CommandHandler {
 
     /**
      * Check if player has permission and send him message if they don't
-     * @param player - to be checked for permission
+     *
+     * @param player        - to be checked for permission
      * @param permissionKey - actual permission to check
      * @return - boolean true if player has permission and false if they don't
      */

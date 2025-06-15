@@ -1,7 +1,6 @@
 package com.mickymaus209.msg.bungeecord.command.commands;
 
 import com.mickymaus209.msg.bungeecord.Msg;
-import com.mickymaus209.msg.bungeecord.command.CommandBase;
 import com.mickymaus209.msg.bungeecord.customevents.PlayerRepliedEvent;
 import com.mickymaus209.msg.bungeecord.customevents.PlayerSendMessageEvent;
 import com.mickymaus209.msg.bungeecord.data.PlayerData;
@@ -11,12 +10,13 @@ import net.md_5.bungee.api.CommandSender;
 import net.md_5.bungee.api.ProxyServer;
 import net.md_5.bungee.api.chat.TextComponent;
 import net.md_5.bungee.api.connection.ProxiedPlayer;
+import net.md_5.bungee.api.plugin.Command;
 
-public class ReplyCommand extends CommandBase {
+public class ReplyCommand extends Command {
     private final Msg msg;
 
-    public ReplyCommand(Msg msg, String name) {
-        super(msg, name);
+    public ReplyCommand(Msg msg, String commandName) {
+        super(commandName);
         this.msg = msg;
     }
 

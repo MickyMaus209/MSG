@@ -2,12 +2,11 @@ package com.mickymaus209.msg.spigot.data;
 
 import com.mickymaus209.msg.common.Data;
 import com.mickymaus209.msg.spigot.Msg;
-import com.mickymaus209.msg.spigot.command.CommandBase;
+import com.mickymaus209.msg.spigot.command.CommandRegistry;
 import com.mickymaus209.msg.spigot.utils.PlaceholderAPIManager;
 import com.mickymaus209.msg.spigot.utils.Utils;
 import me.clip.placeholderapi.PlaceholderAPI;
 import org.bukkit.ChatColor;
-import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.PluginCommand;
 import org.bukkit.entity.Player;
 
@@ -132,12 +131,17 @@ public class ConfigData implements Data {
      * Commands are saved in a map and aliases are saved in config
      */
 
-    //Ohne Map möglich
     private void loadAliases() {
-        for (CommandExecutor commandExecutor : CommandBase.COMMANDS.keySet()) {
+      /*  for (CommandExecutor commandExecutor : CommandBase.COMMANDS.keySet()) {
             PluginCommand pluginCommand = CommandBase.COMMANDS.get(commandExecutor);
             List<String> aliases = msg.getConfigData().getAliasesFromConfig(pluginCommand.getName());
             Utils.registerAliases(aliases, commandExecutor, msg);
+        }
+
+       */
+        for (PluginCommand pluginCommand : CommandRegistry.getAll()) {
+            List<String> aliases = msg.getConfigData().getAliasesFromConfig(pluginCommand.getName());
+            Utils.registerAliases(aliases, pluginCommand.getExecutor(), msg);
         }
     }
 

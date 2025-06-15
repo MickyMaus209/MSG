@@ -14,8 +14,8 @@ public class CommandHandler {
     }
 
     public void registerCommands(){
-        new MsgCommand(msg, "msg");
-        new ReplyCommand(msg, "reply");
+        CommandRegistry.registerCommand("msg", new MsgCommand(msg), msg);
+        CommandRegistry.registerCommand("reply", new ReplyCommand(msg), msg);
     }
 
     public void registerSubCommands(){
