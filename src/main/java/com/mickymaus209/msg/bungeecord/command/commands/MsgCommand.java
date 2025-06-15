@@ -44,7 +44,7 @@ public class MsgCommand extends CommandBase {
     }
 
     private void handlePrivateMessage(ProxiedPlayer player, String[] args) {
-        if (msg.getCommandHandler().checkPermission(player, "msg.use")) return;
+        if (!msg.getCommandHandler().checkPermission(player, "msg.use")) return;
 
         if (args.length < 2) {
             player.sendMessage(msg.getConfigData().getFormatedMessage("msg_usage", player, "%command%", "/" + getName(), "%senderName%", player.getName()));

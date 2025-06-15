@@ -3,8 +3,10 @@ INTERNAL CHANGES:
 
 code comments
 
-Clean up Code
--> CommandHandler für spigot and bungeecord testen
+
+check if spy works - bungeecord
+check if all subcommands work on spigot
+check if data is only set on create (spigot)
 
 
 

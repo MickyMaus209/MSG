@@ -1,13 +1,13 @@
 package com.mickymaus209.msg.bungeecord.data;
 
 import com.mickymaus209.msg.bungeecord.Msg;
+import com.mickymaus209.msg.common.Data;
 import net.md_5.bungee.api.ProxyServer;
-import org.bukkit.entity.Player;
 
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class PlayerData {
+public class PlayerData implements Data {
     private final UUID playerUUID;
     private final Msg msg;
     private boolean deactivated;
@@ -27,7 +27,8 @@ public class PlayerData {
      * Loading settings from file of Player into RAM
      */
     public void loadPlayerData() {
-        dataFile = new CustomFile(msg, "/playerData/" + playerUUID.toString() + ".yml");
+        dataFile = new CustomFile(msg, "/playerData/" + playerUUID.toString() + ".yml", this);
+        dataFile.setup();
 
         setDeactivated(dataFile.getConfig().getBoolean("deactivated"));
         setIgnoredPlayers(dataFile.getConfig().getStringList("ignored_players").stream().map(UUID::fromString).collect(Collectors.toList()));
@@ -129,6 +130,11 @@ public class PlayerData {
     public static PlayerData getPlayerData(UUID playerUUID, Msg msg) {
         if(DATA.get(playerUUID) != null) return DATA.get(playerUUID);
         return new PlayerData(msg, playerUUID);
+    }
+
+    @Override
+    public void onFileCreate() {
+
     }
 
     /*private List<UUID> convertStringListToUUIDList(List<String> uuidsAsStringList) {

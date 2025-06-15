@@ -1,5 +1,6 @@
 package com.mickymaus209.msg.spigot.data;
 
+import com.mickymaus209.msg.common.Data;
 import com.mickymaus209.msg.common.GroupFormat;
 import com.mickymaus209.msg.spigot.Msg;
 import com.mickymaus209.msg.spigot.utils.PlaceholderAPIManager;
@@ -11,7 +12,7 @@ import org.bukkit.entity.Player;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GroupsData {
+public class GroupsData implements Data {
     private final Msg msg;
     private final CustomFile file;
     private final List<GroupFormat> groupFormats;
@@ -20,13 +21,13 @@ public class GroupsData {
 
     public GroupsData(Msg msg) {
         this.msg = msg;
-        file = new CustomFile(msg, FILE_NAME);
+        file = new CustomFile(msg, FILE_NAME, this);
+        file.setup();
         groupFormats = new ArrayList<>();
-        loadDefaults();
         loadGroupFormats();
     }
 
-    private void loadDefaults(){
+    private void setDefaults(){
         file.getConfig().addDefault("enabled", false);
         file.getConfig().addDefault("groups.admin.sender", "%prefix% &cYou &8➔ &c%targetName% &8➔ &7%message%");
         file.getConfig().addDefault("groups.admin.receiver", "%prefix% &c%senderName% &8➔ &cYou &8➔ &7%message%");
@@ -43,6 +44,12 @@ public class GroupsData {
 
         file.getConfig().options().copyDefaults(true);
         file.save();
+    }
+
+
+    @Override
+    public void onFileCreate() {
+        setDefaults();
     }
 
     public void loadGroupFormats() {

@@ -1,8 +1,7 @@
 package com.mickymaus209.msg.bungeecord.data;
 
 import com.mickymaus209.msg.bungeecord.Msg;
-import com.mickymaus209.msg.spigot.utils.PlaceholderAPIManager;
-import me.clip.placeholderapi.PlaceholderAPI;
+import com.mickymaus209.msg.common.Data;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.chat.TextComponent;
 import net.md_5.bungee.api.connection.ProxiedPlayer;
@@ -11,7 +10,7 @@ import net.md_5.bungee.api.connection.ProxiedPlayer;
 import java.util.*;
 import java.util.regex.Pattern;
 
-public class ConfigData {
+public class ConfigData implements Data {
     private final Msg msg;
     private final Map<String, Object> configData;
     private final CustomFile configFile;
@@ -21,7 +20,8 @@ public class ConfigData {
     public ConfigData(Msg msg) {
         this.msg = msg;
         configData = new HashMap<>();
-        configFile = new CustomFile(msg, CONFIG_FILE_NAME);
+        configFile = new CustomFile(msg, CONFIG_FILE_NAME, this);
+        configFile.setup();
         setDefaultConfigData();
     }
 
@@ -198,5 +198,10 @@ public class ConfigData {
      */
     public boolean isSpyEnabled() {
         return spy;
+    }
+
+    @Override
+    public void onFileCreate() {
+
     }
 }

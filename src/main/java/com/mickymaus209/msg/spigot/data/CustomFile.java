@@ -1,5 +1,6 @@
 package com.mickymaus209.msg.spigot.data;
 
+import com.mickymaus209.msg.common.Data;
 import com.mickymaus209.msg.spigot.Msg;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -12,14 +13,16 @@ public class CustomFile {
     private final String fileName;
     private File file;
     private FileConfiguration config;
+    private final Data data;
 
-    public CustomFile(Msg msg, String fileName) {
+    public CustomFile(Msg msg, String fileName, Data data) {
         this.msg = msg;
         this.fileName = fileName;
-        setup();
+        this.data = data;
     }
 
-    private void setup() {
+    protected void setup() {
+        boolean newFile = false;
         if (!msg.getDataFolder().exists())
             msg.getDataFolder().mkdirs();
 
@@ -29,12 +32,15 @@ public class CustomFile {
             try {
                 file.getParentFile().mkdirs();
                 file.createNewFile();
+                newFile = true;
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
         }
-
         config = YamlConfiguration.loadConfiguration(file);
+        //Config must be loaded before
+        if (newFile)
+            data.onFileCreate();
     }
 
     public void save() {

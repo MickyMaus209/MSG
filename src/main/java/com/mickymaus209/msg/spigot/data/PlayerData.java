@@ -1,8 +1,8 @@
 package com.mickymaus209.msg.spigot.data;
 
+import com.mickymaus209.msg.common.Data;
 import com.mickymaus209.msg.spigot.Msg;
 import org.bukkit.Bukkit;
-import org.bukkit.entity.Player;
 
 import java.util.HashMap;
 import java.util.List;
@@ -10,7 +10,7 @@ import java.util.Map;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
-public class PlayerData {
+public class PlayerData implements Data {
     private final Msg msg;
     private boolean deactivated;
     private List<UUID> ignoredPlayers;
@@ -29,7 +29,8 @@ public class PlayerData {
      * Loading settings from file of Player into RAM
      */
     public void loadPlayerData() {
-        dataFile = new CustomFile(msg, "/playerData/" + fileName + ".yml");
+        dataFile = new CustomFile(msg, "/playerData/" + fileName + ".yml", this);
+        dataFile.setup();
 
         setDeactivated(dataFile.getConfig().getBoolean("deactivated"));
         setIgnoredPlayers(dataFile.getConfig().getStringList("ignored_players").stream().map(UUID::fromString).collect(Collectors.toList()));
@@ -138,5 +139,10 @@ public class PlayerData {
      */
     public void setIgnoredPlayers(List<UUID> ignoredPlayers) {
         this.ignoredPlayers = ignoredPlayers;
+    }
+
+    @Override
+    public void onFileCreate() {
+
     }
 }

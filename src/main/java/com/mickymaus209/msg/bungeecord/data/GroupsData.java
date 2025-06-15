@@ -1,6 +1,7 @@
 package com.mickymaus209.msg.bungeecord.data;
 
 import com.mickymaus209.msg.bungeecord.Msg;
+import com.mickymaus209.msg.common.Data;
 import com.mickymaus209.msg.common.GroupFormat;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.chat.TextComponent;
@@ -13,7 +14,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.regex.Pattern;
 
-public class GroupsData {
+public class GroupsData implements Data {
     private final Msg msg;
     private final CustomFile file;
     private final List<GroupFormat> groupFormats;
@@ -22,17 +23,17 @@ public class GroupsData {
     
     public GroupsData(Msg msg) {
         this.msg = msg;
-        file = new CustomFile(msg, FILE_NAME);
+        file = new CustomFile(msg, FILE_NAME, this);
+        file.setup();
         groupFormats = new ArrayList<>();
-        loadDefaults();
         loadGroupFormats();
     }
 
     /**
      * Setting up default data which is set when key is missing
-     * defaultConfigData is used to save all default keys and values that are set by default
+     * defaultDataMAp is used to save all default keys and values that are set by default
      */
-    private void loadDefaults(){
+    private void setDefaults(){
         Map<String, Object> defaultDataMap = new LinkedHashMap<>();
         defaultDataMap.put("enabled", false);
         defaultDataMap.put("groups.admin.sender", "%prefix% &cYou &8➔ &c%targetName% &8➔ &7%message%");
@@ -49,6 +50,11 @@ public class GroupsData {
         defaultDataMap.put("groups.default.permission", "group.default");
 
         file.addDefaults(defaultDataMap);
+    }
+
+    @Override
+    public void onFileCreate() {
+        setDefaults();
     }
 
     /**

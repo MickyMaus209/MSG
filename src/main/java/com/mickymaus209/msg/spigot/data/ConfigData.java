@@ -1,5 +1,6 @@
 package com.mickymaus209.msg.spigot.data;
 
+import com.mickymaus209.msg.common.Data;
 import com.mickymaus209.msg.spigot.Msg;
 import com.mickymaus209.msg.spigot.command.CommandBase;
 import com.mickymaus209.msg.spigot.utils.PlaceholderAPIManager;
@@ -13,7 +14,7 @@ import org.bukkit.entity.Player;
 import java.util.*;
 import java.util.regex.Pattern;
 
-public class ConfigData {
+public class ConfigData implements Data {
     private final Msg msg;
     private final Map<String, Object> configData;
     private final CustomFile configFile;
@@ -24,7 +25,8 @@ public class ConfigData {
 
     public ConfigData(Msg msg) {
         this.msg = msg;
-        configFile = new CustomFile(msg, CONFIG_FILE_NAME);
+        configFile = new CustomFile(msg, CONFIG_FILE_NAME, this);
+        configFile.setup();
         configData = new HashMap<>();
         initialize();
     }
@@ -236,5 +238,10 @@ public class ConfigData {
 
     public boolean isSpyEnabled() {
         return spy;
+    }
+
+    @Override
+    public void onFileCreate() {
+
     }
 }

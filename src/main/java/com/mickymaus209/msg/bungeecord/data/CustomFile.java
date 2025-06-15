@@ -1,6 +1,7 @@
 package com.mickymaus209.msg.bungeecord.data;
 
 import com.mickymaus209.msg.bungeecord.Msg;
+import com.mickymaus209.msg.common.Data;
 import net.md_5.bungee.api.ProxyServer;
 import net.md_5.bungee.config.Configuration;
 import net.md_5.bungee.config.ConfigurationProvider;
@@ -15,11 +16,12 @@ public class CustomFile {
     private File file;
     private Configuration config;
     private final String fileName;
+    private final Data data;
 
-    public CustomFile(Msg msg, String fileName) {
+    protected CustomFile(Msg msg, String fileName, Data data) {
         this.msg = msg;
         this.fileName = fileName + ".yml";
-        setup();
+        this.data = data;
     }
 
     /**
@@ -27,7 +29,8 @@ public class CustomFile {
      * Creating all necessary dirs to create file and ultimately creating the file
      * Initializing Bukkit#Configuration
      */
-    public void setup() {
+    protected void setup() {
+        boolean newFile = false;
         if (!msg.getDataFolder().exists())
             msg.getDataFolder().mkdirs();
 
@@ -37,6 +40,7 @@ public class CustomFile {
             try {
                 file.getParentFile().mkdirs();
                 file.createNewFile();
+                newFile = true;
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
@@ -46,19 +50,22 @@ public class CustomFile {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+        //Config must be loaded before
+        if (newFile)
+            data.onFileCreate();
     }
 
     /**
      * @return the Bukkit#Configuration which got useful methods such as get, set, contains...
      */
-    public Configuration getConfig() {
+    protected Configuration getConfig() {
         return config;
     }
 
     /**
      * Saving file using Bukkit#Configuration
      */
-    public void save() {
+    protected void save() {
         try {
             ConfigurationProvider.getProvider(YamlConfiguration.class).save(config, file);
         } catch (IOException e) {
@@ -69,7 +76,7 @@ public class CustomFile {
     /**
      * Reloading file using Bukkit#Configuration
      */
-    public void reload() {
+    protected void reload() {
         try {
             config = ConfigurationProvider.getProvider(YamlConfiguration.class).load(file);
         } catch (IOException e) {
@@ -79,9 +86,10 @@ public class CustomFile {
 
     /**
      * Setting default data (key -> value) in the file
+     *
      * @param defaultDataMap data (key -> value) as Map object for default data
      */
-    public void addDefaults(Map<String, Object> defaultDataMap) {
+    protected void addDefaults(Map<String, Object> defaultDataMap) {
         for (String key : defaultDataMap.keySet()) {
             if (config.contains(key)) continue;
             config.set(key, defaultDataMap.get(key));
@@ -92,10 +100,11 @@ public class CustomFile {
 
     /**
      * Set a single "data" (key -> value) as default data which will be set when file is created or missing key.
-     * @param key default key to be set
+     *
+     * @param key   default key to be set
      * @param value default value to be set
      */
-    public void addDefault(String key, Object value) {
+    protected void addDefault(String key, Object value) {
         if (config.contains(key)) return;
         config.set(key, value);
         save();
@@ -104,7 +113,7 @@ public class CustomFile {
     /**
      * @return - the actual Java file object
      */
-    public File getFile() {
+    protected File getFile() {
         return file;
     }
 }
