@@ -22,14 +22,14 @@ public class AliasManager {
      */
     public void registerAliases(String commandName) {
         List<String> aliases = msg.getConfigData().getAliasesFromConfig(commandName);
-        Command originalCommand = CommandRegistry.get(commandName);
+        CommandBase originalCommand = CommandRegistry.get(commandName);
         if (originalCommand == null) return;
 
         for (String alias : aliases) {
             Command wrapper = new Command(alias) {
                 @Override
                 public void execute(CommandSender sender, String[] args) {
-                   originalCommand.execute(sender, args);
+                   originalCommand.executeCommand(sender, args, alias);
                 }
             };
             registeredAliasWrappers.add(wrapper);
@@ -57,6 +57,7 @@ public class AliasManager {
     /**
      * @return List of all registered alias as Command Object
      */
+    @SuppressWarnings("unused")
     public List<Command> getRegisteredAliasWrappers() {
         return registeredAliasWrappers;
     }

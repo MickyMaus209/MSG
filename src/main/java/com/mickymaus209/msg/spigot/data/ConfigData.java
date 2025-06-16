@@ -2,12 +2,9 @@ package com.mickymaus209.msg.spigot.data;
 
 import com.mickymaus209.msg.common.Data;
 import com.mickymaus209.msg.spigot.Msg;
-import com.mickymaus209.msg.spigot.command.CommandRegistry;
 import com.mickymaus209.msg.spigot.utils.PlaceholderAPIManager;
-import com.mickymaus209.msg.spigot.utils.Utils;
 import me.clip.placeholderapi.PlaceholderAPI;
 import org.bukkit.ChatColor;
-import org.bukkit.command.PluginCommand;
 import org.bukkit.entity.Player;
 
 import java.util.*;
@@ -107,7 +104,7 @@ public class ConfigData implements Data {
 
     /**
      * Loading modified data from config into Map (RAM).
-     * This method requires Map object (of defaultData) because the default Keys are used to get the actual data set in the config.
+     * This method requires {@link Map} object (of defaultData) because the default Keys are used to get the actual data set in the config.
      *
      * @param data is used for the getting the keys of the config and therefore getting the values set for the corresponding keys
      */
@@ -127,32 +124,14 @@ public class ConfigData implements Data {
     }
 
     /**
-     * Registering all Aliases for all commands.
-     * Commands are saved in a map and aliases are saved in config
-     */
-
-    private void loadAliases() {
-      /*  for (CommandExecutor commandExecutor : CommandBase.COMMANDS.keySet()) {
-            PluginCommand pluginCommand = CommandBase.COMMANDS.get(commandExecutor);
-            List<String> aliases = msg.getConfigData().getAliasesFromConfig(pluginCommand.getName());
-            Utils.registerAliases(aliases, commandExecutor, msg);
-        }
-
-       */
-        for (PluginCommand pluginCommand : CommandRegistry.getAll()) {
-            List<String> aliases = msg.getConfigData().getAliasesFromConfig(pluginCommand.getName());
-            Utils.registerAliases(aliases, pluginCommand.getExecutor(), msg);
-        }
-    }
-
-    /**
      * Reloading Config
      * The config file will be reloaded and the data will be loaded again from Config file into Map (RAM).
      */
     public void reload() {
         configFile.reload();
         initialize();
-        loadAliases();
+        msg.getAliasManager().unregisterAllAliases();
+        msg.getAliasManager().registerAllAliases();
     }
 
     /**
@@ -220,26 +199,45 @@ public class ConfigData implements Data {
         return aliases;
     }
 
+    /**
+     * @return getting boolean of whether the update notifier is turned on or off
+     */
     public boolean isCheckForUpdatesTurnedOn() {
         return checkForUpdates;
     }
 
+    /**
+     * @return name of the sound that is configured in the config.yml.
+     * Sound will be played when it is turned on in config.yml and player received a private message
+     */
     public String getSoundName() {
         return soundName;
     }
 
+    /**
+     * @return volume of the sound that is configured in the config.yml.
+     */
     public int getSoundVolume() {
         return soundVolume;
     }
 
+    /**
+     * @return pitch of the sound that is configured in the config.yml.
+     */
     public int getSoundPitch() {
         return soundPitch;
     }
 
+    /**
+     * @return getting boolean of whether the spy function is enabled
+     */
     public boolean isPlaySoundEnabled() {
         return playSound;
     }
 
+    /**
+     * @return getting boolean of whether the spy function is enabled
+     */
     public boolean isSpyEnabled() {
         return spy;
     }

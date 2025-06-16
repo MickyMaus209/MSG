@@ -1,6 +1,7 @@
 package com.mickymaus209.msg.bungeecord.listeners;
 
 import com.mickymaus209.msg.bungeecord.Msg;
+import com.mickymaus209.msg.bungeecord.command.CommandBase;
 import com.mickymaus209.msg.bungeecord.command.commands.MsgCommand;
 import com.mickymaus209.msg.bungeecord.command.CommandRegistry;
 import net.md_5.bungee.api.ProxyServer;
@@ -13,6 +14,7 @@ import net.md_5.bungee.event.EventHandler;
 import java.util.Collection;
 import java.util.stream.Collectors;
 
+@SuppressWarnings("all")
 public class TabCompleteListener implements Listener {
     private final Msg msg;
 
@@ -29,8 +31,8 @@ public class TabCompleteListener implements Listener {
         String[] args = event.getCursor().split(" ");
         System.out.println("test");
 
-        Collection<Command> allCommands = CommandRegistry.getAll();
-        allCommands.addAll(msg.getAliasManager().getRegisteredAliasWrappers());
+        Collection<CommandBase> allCommands = CommandRegistry.getAll();
+        //allCommands.addAll(msg.getAliasManager().getRegisteredAliasWrappers());
 
 
         Command cmd = null;

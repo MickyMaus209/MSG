@@ -44,7 +44,7 @@ public class PostLoginListener implements Listener {
                 latestVersion = msg.getUpdateChecker().getLatestVersion();
 
         TextComponent updateButton = Utils.getClickAbleUrlMessage(
-                msg.getConfigData().getFormatedMessage("update_download_button", player).toString(),
+                msg.getConfigData().getFormatedMessage("update_download_button", player).getText(),
                 msg.getDescription().getDescription(), "§7Open link");
                 msg.getConfigData().getFormatedMessage("update_download_button", player);
 

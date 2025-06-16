@@ -3,9 +3,9 @@ package com.mickymaus209.msg.bungeecord.command.subcommands;
 import com.mickymaus209.msg.bungeecord.Msg;
 import com.mickymaus209.msg.bungeecord.command.SubCommand;
 import com.mickymaus209.msg.bungeecord.utils.Utils;
+import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.chat.TextComponent;
 import net.md_5.bungee.api.connection.ProxiedPlayer;
-import org.bukkit.ChatColor;
 
 public class InfoSubCommand implements SubCommand {
     private final Msg msg;

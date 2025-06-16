@@ -18,12 +18,20 @@ public class UpdateChecker {
     private String latestVersion;
 
 
+    /**
+     * @param plugin - main Plugin extending {@link JavaPlugin}
+     * @param resourceId - id of SpigotMC project to check version
+     */
     public UpdateChecker(JavaPlugin plugin, int resourceId) {
         this.plugin = plugin;
         this.resourceId = resourceId;
         currentVersion = plugin.getDescription().getVersion();
     }
 
+    /**
+     * Getting latest public version
+     * @param consumer - version
+     */
     public void getVersion(final Consumer<String> consumer) {
         Bukkit.getScheduler().runTaskAsynchronously(this.plugin, () -> {
             try (InputStream inputStream = new URL("https://api.spigotmc.org/legacy/update.php?resource=" + this.resourceId).openStream(); Scanner scanner = new Scanner(inputStream)) {
@@ -38,6 +46,9 @@ public class UpdateChecker {
         });
     }
 
+    /**
+     * Check if update is available, setting boolean updateAvailable
+     */
     public void check() {
         getVersion(version -> {
             if (!plugin.getDescription().getVersion().equals(version))
@@ -52,10 +63,16 @@ public class UpdateChecker {
         return updateAvailable;
     }
 
+    /**
+     * @return current version of this build
+     */
     public String getCurrentVersion() {
         return currentVersion;
     }
 
+    /**
+     * @return latest public version released on SpigotMC.org
+     */
     public String getLatestVersion() {
         return latestVersion;
     }

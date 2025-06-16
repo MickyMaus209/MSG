@@ -69,9 +69,9 @@ public class GroupsData implements Data {
 
         if (groupsSection != null) {
             for (String group : groupsSection.getKeys()) {
-                String senderFormat = getDataFromConfig("groups." + group + ".sender");
-                String receiverFormat = getDataFromConfig("groups." + group + ".receiver");
-                String permission = getDataFromConfig("groups." + group + ".permission");
+                String senderFormat = getStringFromConfig("groups." + group + ".sender");
+                String receiverFormat = getStringFromConfig("groups." + group + ".receiver");
+                String permission = getStringFromConfig("groups." + group + ".permission");
                 GroupFormat groupFormat = new GroupFormat(senderFormat, receiverFormat, group, permission);
                 groupFormats.add(groupFormat);
             }
@@ -134,7 +134,7 @@ public class GroupsData implements Data {
      * @param key - key set in file
      * @return value of key in file
      */
-    public String getDataFromConfig(String key) {
+    public String getStringFromConfig(String key) {
         return file.getConfig().getString(key);
     }
 

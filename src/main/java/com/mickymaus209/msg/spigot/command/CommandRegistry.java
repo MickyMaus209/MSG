@@ -1,7 +1,6 @@
 package com.mickymaus209.msg.spigot.command;
 
 import com.mickymaus209.msg.spigot.Msg;
-import com.mickymaus209.msg.spigot.utils.Utils;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.PluginCommand;
 
@@ -23,7 +22,7 @@ public class CommandRegistry {
         PluginCommand pluginCommand = msg.getCommand(commandName);
         pluginCommand.setExecutor(commandExecutor);
         COMMANDS.put(commandExecutor, pluginCommand);
-        Utils.registerAliases(msg.getConfigData().getAliasesFromConfig(pluginCommand.getName()), commandExecutor, msg);
+        msg.getAliasManager().registerAliases(msg.getConfigData().getAliasesFromConfig(pluginCommand.getName()), commandExecutor);
     }
 
     /**

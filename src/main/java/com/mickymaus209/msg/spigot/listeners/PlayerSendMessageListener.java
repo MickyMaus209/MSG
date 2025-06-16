@@ -17,6 +17,12 @@ public class PlayerSendMessageListener implements Listener {
         Bukkit.getPluginManager().registerEvents(this, msg);
     }
 
+    /**
+     * Event is called when Player sent private message
+     * Here it is used to handle sounds.
+     * If it is enabled in config, a sound will be played for the receiver of the private message
+     * The type of sound is configured in config.yml
+     */
     @EventHandler
     public void onPlayerSendMessage(PlayerSendMessageEvent event) {
         //Player sender = event.getSender();

@@ -18,6 +18,11 @@ public class PlayerJoinListener implements Listener {
         Bukkit.getPluginManager().registerEvents(this, msg);
     }
 
+    /**
+     * Event is called when Player is joining server
+     * Used to load player data from File into RAM
+     * Sending Player update notify
+     */
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
@@ -26,6 +31,7 @@ public class PlayerJoinListener implements Listener {
         PlayerData playerData = PlayerData.getPlayerData(player.getUniqueId(), msg);
         playerData.loadPlayerData();
 
+        //Checking for update and sending player update notify
         if (!msg.getConfigData().isCheckForUpdatesTurnedOn()) return;
 
         if (!msg.getUpdateChecker().isUpdateAvailable()) return;

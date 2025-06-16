@@ -9,14 +9,14 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class CommandRegistry {
-    private static final Map<String, Command> COMMANDS = new HashMap<>();
+    private static final Map<String, CommandBase> COMMANDS = new HashMap<>();
 
     /**
      * Registering commands for {@link Map} and {@link ProxyServer}
      * @param command - Command object for command class
      * @param msg - main class (extends {@link net.md_5.bungee.api.plugin.Plugin})
      */
-    public static void registerCommand(Command command, Msg msg) {
+    public static void registerCommand(CommandBase command, Msg msg) {
         COMMANDS.put(command.getName(), command);
         ProxyServer.getInstance().getPluginManager().registerCommand(msg, command);
         msg.getAliasManager().registerAliases(command.getName());
@@ -27,7 +27,7 @@ public class CommandRegistry {
      * @param name - name of command to find
      * @return Command object of specified Command name
      */
-    public static Command get(String name) {
+    public static CommandBase get(String name) {
         return COMMANDS.get(name.toLowerCase());
     }
 
@@ -35,7 +35,7 @@ public class CommandRegistry {
      * Get all registered Commands
      * @return values of Collection which stores all registered Commands
      */
-    public static Collection<Command> getAll() {
+    public static Collection<CommandBase> getAll() {
         return COMMANDS.values();
     }
 }

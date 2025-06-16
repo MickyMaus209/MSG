@@ -14,6 +14,12 @@ public class SpyManager {
         this.msg = msg;
     }
 
+    /**
+     * Logging message for spying
+     * @param sender - of message
+     * @param receiver of message
+     * @param rawMessage - unformatted message
+     */
     public void logSpies(Player sender, Player receiver, String rawMessage) {
         for (Spy spy : SPIES.values()) {
             String spyMessage = msg.getConfigData().getFormatedMessage("spy_message", spy.getPlayer(),
@@ -33,11 +39,18 @@ public class SpyManager {
         }
     }
 
+    /**
+     * Clearing both spies and spying players of all spies
+     */
     public void reload() {
         SPIES.forEach((player, spy) -> spy.getSpyingPlayers().clear());
         SPIES.clear();
     }
 
+    /**
+     * Removing Player from any spying list as well as from spies List
+     * @param player - player to be removed
+     */
     public void removePlayer(Player player) {
         for (Spy spy : SPIES.values()) {
             if (spy.isSpying(player))

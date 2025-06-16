@@ -1,6 +1,7 @@
 package com.mickymaus209.msg.bungeecord.command.commands;
 
 import com.mickymaus209.msg.bungeecord.Msg;
+import com.mickymaus209.msg.bungeecord.command.CommandBase;
 import com.mickymaus209.msg.bungeecord.command.SubCommand;
 import com.mickymaus209.msg.bungeecord.command.SubCommandRegistry;
 import com.mickymaus209.msg.bungeecord.customevents.PlayerSendMessageEvent;
@@ -11,18 +12,24 @@ import net.md_5.bungee.api.CommandSender;
 import net.md_5.bungee.api.ProxyServer;
 import net.md_5.bungee.api.chat.TextComponent;
 import net.md_5.bungee.api.connection.ProxiedPlayer;
-import net.md_5.bungee.api.plugin.Command;
 
-public class MsgCommand extends Command {
+public class MsgCommand extends CommandBase {
     private final Msg msg;
+    private final String mainCommandName;
 
-    public MsgCommand(Msg msg, String commandName) {
-        super(commandName);
+    public MsgCommand(Msg msg, String mainCommandName) {
+        super(mainCommandName);
         this.msg = msg;
+        this.mainCommandName = mainCommandName;
     }
 
     @Override
     public void execute(CommandSender sender, String[] args) {
+        executeCommand(sender, args, mainCommandName);
+    }
+
+    @Override
+    public void executeCommand(CommandSender sender, String[] args, String label) {
         if (!(sender instanceof ProxiedPlayer)) {
             sender.sendMessage(new TextComponent("This command can not be used by " + sender.getName()));
             return;
@@ -31,23 +38,23 @@ public class MsgCommand extends Command {
         ProxiedPlayer player = (ProxiedPlayer) sender;
 
         if (args.length == 0) {
-            player.sendMessage(msg.getConfigData().getFormatedMessage("msg_usage", player, "%command%", "/" + getName()));
+            player.sendMessage(msg.getConfigData().getFormatedMessage("msg_usage", player, "%command%", "/" + label));
             return;
         }
 
         String subCommandKey = args[0].toLowerCase();
         SubCommand subCommand = SubCommandRegistry.getSubCommandMap().get(subCommandKey);
         if (subCommand != null)
-            subCommand.execute(player, args, getName());
+            subCommand.execute(player, args, label);
         else
-            handlePrivateMessage(player, args);
+            handlePrivateMessage(player, args, label);
     }
 
-    private void handlePrivateMessage(ProxiedPlayer player, String[] args) {
+    private void handlePrivateMessage(ProxiedPlayer player, String[] args, String label) {
         if (!msg.getCommandHandler().checkPermission(player, "msg.use")) return;
 
         if (args.length < 2) {
-            player.sendMessage(msg.getConfigData().getFormatedMessage("msg_usage", player, "%command%", "/" + getName(), "%senderName%", player.getName()));
+            player.sendMessage(msg.getConfigData().getFormatedMessage("msg_usage", player, "%command%", "/" + label, "%senderName%", player.getName()));
             return;
         }
 

@@ -21,6 +21,12 @@ public class CustomFile {
         this.data = data;
     }
 
+    /**
+     * Setting up file
+     * Creating all necessary dirs to create file and ultimately creating the file
+     * Initializing {@link org.bukkit.configuration.Configuration}
+     */
+    @SuppressWarnings("ResultOfMethodCallIgnored")
     protected void setup() {
         boolean newFile = false;
         if (!msg.getDataFolder().exists())
@@ -43,6 +49,9 @@ public class CustomFile {
             data.onFileCreate();
     }
 
+    /**
+     * Saving file using {@link org.bukkit.configuration.Configuration}
+     */
     public void save() {
         try {
             config.save(file);
@@ -51,10 +60,16 @@ public class CustomFile {
         }
     }
 
+    /**
+     * Reloading file using {@link org.bukkit.configuration.Configuration}
+     */
     public void reload() {
         config = YamlConfiguration.loadConfiguration(file);
     }
 
+    /**
+     * @return the {@link org.bukkit.configuration.Configuration} which got useful methods such as get, set, contains...
+     */
     public FileConfiguration getConfig() {
         return config;
     }

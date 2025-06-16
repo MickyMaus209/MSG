@@ -20,7 +20,7 @@ public class SubCommandRegistry {
 
     /**
      * Getting all sub commands
-     * @return - Map of all registered sub commands (Key: String, Value: Class implementing SubCommand)
+     * @return - Map of all registered sub commands (Key: String, Value: Class implementing {@link SubCommand})
      */
     public static Map<String, SubCommand> getSubCommandMap() {
         return SUB_COMMAND_MAP;

@@ -16,6 +16,11 @@ public class PlayerQuitListener implements Listener {
         Bukkit.getPluginManager().registerEvents(this, msg);
     }
 
+    /**
+     * Event is called when Player leaves/quits server
+     * Used to save player data from RAM into file
+     * Removing player from possible Spying to avoid interceptions
+     */
     @EventHandler
     public void onPlayerQuit(PlayerQuitEvent event) {
         Player player = event.getPlayer();

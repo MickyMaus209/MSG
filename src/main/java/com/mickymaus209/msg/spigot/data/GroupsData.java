@@ -27,6 +27,9 @@ public class GroupsData implements Data {
         loadGroupFormats();
     }
 
+    /**
+     * Setting up default data which is set when key is missing
+     */
     private void setDefaults(){
         file.getConfig().addDefault("enabled", false);
         file.getConfig().addDefault("groups.admin.sender", "%prefix% &cYou &8➔ &c%targetName% &8➔ &7%message%");
@@ -52,6 +55,10 @@ public class GroupsData implements Data {
         setDefaults();
     }
 
+    /**
+     * Loading the groups sections from the file.
+     * If group section was found, a {@link GroupFormat} object will be created and added to a {@link List}
+     */
     public void loadGroupFormats() {
         isEnabled = file.getConfig().getBoolean("enabled");
         if (!isEnabled) return;
@@ -59,15 +66,20 @@ public class GroupsData implements Data {
 
         if (groupsSection != null) {
             for (String group : groupsSection.getKeys(false)) {
-                String senderFormat = getData("groups." + group + ".sender");
-                String receiverFormat = getData("groups." + group + ".receiver");
-                String permission = getData("groups." + group + ".permission");
+                String senderFormat = getStringFromConfig("groups." + group + ".sender");
+                String receiverFormat = getStringFromConfig("groups." + group + ".receiver");
+                String permission = getStringFromConfig("groups." + group + ".permission");
                 GroupFormat groupFormat = new GroupFormat(senderFormat, receiverFormat, group, permission);
                 groupFormats.add(groupFormat);
             }
         }
     }
 
+    /**
+     * Finding the corresponding format for a {@link Player}
+     * @param player - player to find the group format for
+     * @return GroupFormat object which stores all necessary information about the format.
+     */
     public GroupFormat findGroupFormat(Player player) {
         for (GroupFormat groupFormat : groupFormats) {
             if (!player.hasPermission(groupFormat.getPermission())) continue;
@@ -76,6 +88,14 @@ public class GroupsData implements Data {
         return null;
     }
 
+    /**
+     * Replace all defined placeholders as well as other placeholders for messages.
+     *
+     * @param rawMessage          message to be formatted
+     * @param player       to replace values for placeholders
+     * @param placeholders define more placeholders (1: placeholder, 2: value...)
+     * @return formated message that has replaced placeholder
+     */
     public String formatMessage(String rawMessage, Player player, Object... placeholders){
 
         //There is an undefined amount of placeholders which are processed here. It will replace the first object with the second, the third with the fourth and so on.
@@ -100,14 +120,25 @@ public class GroupsData implements Data {
         return rawMessage;
     }
 
+    /**
+     * @return true if group formats are enabled in the file
+     */
     public boolean isEnabled() {
         return isEnabled;
     }
 
-    public String getData(String key) {
+    /**
+     * Getting String from Configuration
+     * @param key - key set in file
+     * @return value of key in file
+     */
+    public String getStringFromConfig(String key) {
         return file.getConfig().getString(key);
     }
 
+    /**
+     * Reloading group formats including {@link CustomFile}, {@link List} of {@link GroupFormat} and loading Group formats again out of config
+     */
     public void reload() {
         file.reload();
         groupFormats.clear();

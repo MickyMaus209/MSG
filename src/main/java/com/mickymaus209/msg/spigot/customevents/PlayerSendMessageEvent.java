@@ -12,6 +12,12 @@ public class PlayerSendMessageEvent extends Event {
     private final Player receiver;
     private final String message;
 
+    /**
+     * This event is called when a player sends a private message
+     * @param sender - sender of private message
+     * @param receiver - receiver of private message
+     * @param message - sent message
+     */
     public PlayerSendMessageEvent(Player sender, Player receiver, String message){
         this.sender = sender;
         this.receiver = receiver;
@@ -35,6 +41,7 @@ public class PlayerSendMessageEvent extends Event {
         return HANDLERS;
     }
 
+    @SuppressWarnings("unused")
     public static HandlerList getHandlerList() {
         return HANDLERS;
     }
