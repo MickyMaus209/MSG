@@ -1,7 +1,7 @@
 
 
 stopped working on:
-ignored list --> test & and code for bungeecord
+ignored list command
 max file size
 tabcompleter --> doesnt work
 maybe able to text via console????

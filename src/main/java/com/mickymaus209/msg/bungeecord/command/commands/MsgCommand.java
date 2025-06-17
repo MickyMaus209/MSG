@@ -6,6 +6,7 @@ import com.mickymaus209.msg.bungeecord.command.SubCommand;
 import com.mickymaus209.msg.bungeecord.command.SubCommandRegistry;
 import com.mickymaus209.msg.bungeecord.customevents.PlayerSendMessageEvent;
 import com.mickymaus209.msg.bungeecord.data.PlayerData;
+import com.mickymaus209.msg.bungeecord.utils.MessageBuilder;
 import com.mickymaus209.msg.common.GroupFormat;
 import com.mickymaus209.msg.common.MsgRegistry;
 import net.md_5.bungee.api.CommandSender;
@@ -97,17 +98,17 @@ public class MsgCommand extends CommandBase {
 
         String message = builder.toString();
 
-        TextComponent senderMessage = msg.getConfigData().getFormatedMessage("sender_message", player, "%targetName%", target.getName(), "%message%", message, "%senderName%", player.getName());
-        TextComponent receiverMessage = msg.getConfigData().getFormatedMessage("receiver_message", target, "%targetName%", target.getName(), "%message%", message, "%senderName%", player.getName());
+        TextComponent senderMessage = msg.getConfigData().getFormatedMessage("sender_message", player, "%targetName%", target.getName(), "%message%", message, "%senderName%", player.getName(), "%sender_server%", player.getServer().getInfo().getName(), "%target_server%", target.getServer().getInfo().getName());
+        TextComponent receiverMessage = msg.getConfigData().getFormatedMessage("receiver_message", target, "%targetName%", target.getName(), "%message%", message, "%senderName%", player.getName(), "%sender_server%", player.getServer().getInfo().getName(), "%target_server%", target.getServer().getInfo().getName());
 
         if (msg.getGroupsData().isEnabled()) {
             GroupFormat senderGroupFormat = msg.getGroupsData().findGroupFormat(player);
             GroupFormat targetGroupFormat = msg.getGroupsData().findGroupFormat(target);
 
             if (senderGroupFormat != null)
-                senderMessage = msg.getGroupsData().formatMessage(senderGroupFormat.getSenderFormat(), player, "%targetName%", target.getName(), "%message%", message);
+                senderMessage = msg.getGroupsData().formatMessage(senderGroupFormat.getSenderFormat(), player, "%targetName%", target.getName(), "%message%", message, "%sender_server%", player.getServer().getInfo().getName(), "%target_server%", target.getServer().getInfo().getName());
             if (targetGroupFormat != null)
-                receiverMessage = msg.getGroupsData().formatMessage(targetGroupFormat.getReceiverFormat(), player, "%targetName%", target.getName(), "%message%", message);
+                receiverMessage = msg.getGroupsData().formatMessage(targetGroupFormat.getReceiverFormat(), player, "%targetName%", target.getName(), "%message%", message, "%sender_server%", player.getServer().getInfo().getName(), "%target_server%", target.getServer().getInfo().getName());
         }
 
         player.sendMessage(senderMessage);
