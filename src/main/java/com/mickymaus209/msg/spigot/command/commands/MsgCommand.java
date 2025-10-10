@@ -6,7 +6,7 @@ import com.mickymaus209.msg.spigot.Msg;
 import com.mickymaus209.msg.spigot.command.SubCommand;
 import com.mickymaus209.msg.spigot.command.SubCommandRegistry;
 import com.mickymaus209.msg.spigot.customevents.PlayerSendMessageEvent;
-import com.mickymaus209.msg.spigot.data.PlayerData;
+import com.mickymaus209.msg.spigot.data.playerdata.PlayerData;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -38,8 +38,10 @@ public class MsgCommand implements CommandExecutor {
         SubCommand subCommand = SubCommandRegistry.getSubCommandMap().get(subCommandKey);
         if (subCommand != null)
             subCommand.execute(player, args, label);
-        else
+        else{
             handlePrivateMessage(player, args, label);
+        }
+
         return false;
     }
 
@@ -63,14 +65,14 @@ public class MsgCommand implements CommandExecutor {
             return;
         }
 
-        PlayerData playerData = PlayerData.getPlayerData(player.getUniqueId(), msg);
+        PlayerData playerData = msg.getPlayerDataManager().getPlayerData(player.getUniqueId());
 
         if (playerData.hasIgnored(target.getUniqueId())) {
             player.sendMessage(msg.getConfigData().getFormatedMessage("you_ignored_receiver", player, "%targetName%", target.getName()));
             return;
         }
 
-        PlayerData targetData = PlayerData.getPlayerData(target.getUniqueId(), msg);
+        PlayerData targetData = msg.getPlayerDataManager().getPlayerData(target.getUniqueId());
 
         if (targetData.isDeactivated()) {
             player.sendMessage(msg.getConfigData().getFormatedMessage("receiver_deactivated", player, "%targetName%", target.getName()));

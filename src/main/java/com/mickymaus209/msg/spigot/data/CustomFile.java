@@ -27,7 +27,7 @@ public class CustomFile {
      * Initializing {@link org.bukkit.configuration.Configuration}
      */
     @SuppressWarnings("ResultOfMethodCallIgnored")
-    protected void setup() {
+    public void setup() {
         boolean newFile = false;
         if (!msg.getDataFolder().exists())
             msg.getDataFolder().mkdirs();

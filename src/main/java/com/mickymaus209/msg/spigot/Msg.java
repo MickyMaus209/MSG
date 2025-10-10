@@ -4,7 +4,8 @@ import com.mickymaus209.msg.spigot.command.AliasManager;
 import com.mickymaus209.msg.spigot.command.CommandHandler;
 import com.mickymaus209.msg.spigot.data.ConfigData;
 import com.mickymaus209.msg.spigot.data.GroupsData;
-import com.mickymaus209.msg.spigot.data.PlayerData;
+import com.mickymaus209.msg.spigot.data.MySQLData;
+import com.mickymaus209.msg.spigot.data.playerdata.PlayerDataManager;
 import com.mickymaus209.msg.spigot.listeners.PlayerJoinListener;
 import com.mickymaus209.msg.spigot.listeners.PlayerQuitListener;
 import com.mickymaus209.msg.spigot.listeners.PlayerSendMessageListener;
@@ -23,6 +24,9 @@ public class Msg extends JavaPlugin {
     private SpyManager spyManager;
     private CommandHandler commandHandler;
     private AliasManager aliasManager;
+    private MySQLData mySQLData;
+    private PlayerDataManager playerDataManager;
+
 
     /**
      * Called when the plugin is enabled.
@@ -34,7 +38,7 @@ public class Msg extends JavaPlugin {
         register();
         Utils.sendStartStopMessage(this);
         updateChecker.check();
-        PlayerData.reloadAllPlayerData(this);
+        playerDataManager.reloadAllPlayerData();
     }
 
     /**
@@ -45,7 +49,7 @@ public class Msg extends JavaPlugin {
     @Override
     public void onDisable() {
         Utils.sendStartStopMessage(this);
-        PlayerData.saveAllPlayerData();
+        playerDataManager.saveAllPlayerData();
     }
 
     /**
@@ -64,9 +68,11 @@ public class Msg extends JavaPlugin {
         updateChecker = new UpdateChecker(this, 80931);
         configData = new ConfigData(this);
         groupsData = new GroupsData(this);
+        mySQLData = new MySQLData(this);
 
         spyManager = new SpyManager(this);
         aliasManager = new AliasManager(this);
+        playerDataManager = new PlayerDataManager(this);
 
         commandHandler = new CommandHandler(this);
         commandHandler.registerCommands();
@@ -126,5 +132,13 @@ public class Msg extends JavaPlugin {
      */
     public AliasManager getAliasManager() {
         return aliasManager;
+    }
+
+    public MySQLData getMySQLData() {
+        return mySQLData;
+    }
+
+    public PlayerDataManager getPlayerDataManager() {
+        return playerDataManager;
     }
 }

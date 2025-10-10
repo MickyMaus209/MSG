@@ -3,7 +3,7 @@ package com.mickymaus209.msg.spigot.command.subcommands;
 import com.mickymaus209.msg.common.UUIDFetcher;
 import com.mickymaus209.msg.spigot.command.SubCommand;
 import com.mickymaus209.msg.spigot.Msg;
-import com.mickymaus209.msg.spigot.data.PlayerData;
+import com.mickymaus209.msg.spigot.data.playerdata.PlayerData;
 import org.bukkit.entity.Player;
 
 public class IgnoreSubCommand implements SubCommand {
@@ -36,7 +36,7 @@ public class IgnoreSubCommand implements SubCommand {
                 return;
             }
 
-            PlayerData playerData = PlayerData.getPlayerData(player.getUniqueId(), msg);
+            PlayerData playerData = msg.getPlayerDataManager().getPlayerData(player.getUniqueId());
 
             if (isUnignore) {
                 if (playerData.hasIgnored(targetUUID)) {

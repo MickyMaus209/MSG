@@ -2,7 +2,6 @@ package com.mickymaus209.msg.spigot.command.subcommands;
 
 import com.mickymaus209.msg.spigot.Msg;
 import com.mickymaus209.msg.spigot.command.SubCommand;
-import com.mickymaus209.msg.spigot.data.PlayerData;
 import org.bukkit.entity.Player;
 
 public class ReloadSubCommand implements SubCommand {
@@ -16,8 +15,8 @@ public class ReloadSubCommand implements SubCommand {
     public void execute(Player player, String[] args, String label) {
         if (!msg.getCommandHandler().checkPermission(player, "msg.reload")) return;
 
-        PlayerData.saveAllPlayerData();
-        PlayerData.reloadAllPlayerData(msg);
+        msg.getPlayerDataManager().saveAllPlayerData();
+        msg.getPlayerDataManager().reloadAllPlayerData();
         msg.getConfigData().reload();
         msg.getGroupsData().reload();
         msg.getSpyManager().reload();

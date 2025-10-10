@@ -25,6 +25,8 @@ dependencies {
     implementation("com.google.code.gson:gson:2.10.1")
     implementation("org.bstats:bstats-bukkit:3.0.0")
     implementation("org.bstats:bstats-bungeecord:3.0.0")
+    implementation("com.zaxxer:HikariCP:5.1.0")
+    implementation("com.mysql:mysql-connector-j:8.4.0")
 }
 
 java{
@@ -39,6 +41,8 @@ tasks.withType<JavaCompile> {
 tasks.shadowJar {
     relocate("org.bstats", "$group.libs.bstats")
     relocate("com.google.gson", "$group.libs.gson")
+    relocate("com.zaxxer.hikari", "$group.libs.hikari")
+    relocate("com.mysql", "$group.libs.mysql")
 }
 
 tasks.getByName<Test>("test") {

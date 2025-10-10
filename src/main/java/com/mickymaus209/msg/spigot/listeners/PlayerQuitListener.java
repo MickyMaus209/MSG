@@ -1,7 +1,7 @@
 package com.mickymaus209.msg.spigot.listeners;
 
 import com.mickymaus209.msg.spigot.Msg;
-import com.mickymaus209.msg.spigot.data.PlayerData;
+import com.mickymaus209.msg.spigot.data.playerdata.PlayerData;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -24,8 +24,9 @@ public class PlayerQuitListener implements Listener {
     @EventHandler
     public void onPlayerQuit(PlayerQuitEvent event) {
         Player player = event.getPlayer();
-        PlayerData playerData = PlayerData.getPlayerData(player.getUniqueId(), msg);
+        PlayerData playerData = msg.getPlayerDataManager().getPlayerData(player.getUniqueId());
         playerData.savePlayerData();
+        playerData.removeFromCache();
         msg.getSpyManager().removePlayer(player);
     }
 }

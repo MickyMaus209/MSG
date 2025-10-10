@@ -1,7 +1,7 @@
 package com.mickymaus209.msg.spigot.listeners;
 
 import com.mickymaus209.msg.spigot.Msg;
-import com.mickymaus209.msg.spigot.data.PlayerData;
+import com.mickymaus209.msg.spigot.data.playerdata.PlayerData;
 import com.mickymaus209.msg.spigot.utils.Utils;
 import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Bukkit;
@@ -27,8 +27,8 @@ public class PlayerJoinListener implements Listener {
     public void onPlayerJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
 
-        //Loading PlayerData such as list of ignored players and whether MSG is turned off or not
-        PlayerData playerData = PlayerData.getPlayerData(player.getUniqueId(), msg);
+        //Loading PlayerData such as list of ignored players and whether MSG is turned off or not;
+        PlayerData playerData = msg.getPlayerDataManager().getPlayerData(player.getUniqueId());
         playerData.loadPlayerData();
 
         //Checking for update and sending player update notify

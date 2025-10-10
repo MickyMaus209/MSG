@@ -5,7 +5,7 @@ import com.mickymaus209.msg.common.MsgRegistry;
 import com.mickymaus209.msg.spigot.Msg;
 import com.mickymaus209.msg.spigot.customevents.PlayerRepliedEvent;
 import com.mickymaus209.msg.spigot.customevents.PlayerSendMessageEvent;
-import com.mickymaus209.msg.spigot.data.PlayerData;
+import com.mickymaus209.msg.spigot.data.playerdata.PlayerData;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -50,14 +50,14 @@ public class ReplyCommand implements CommandExecutor {
             return false;
         }
 
-        PlayerData playerData = PlayerData.getPlayerData(player.getUniqueId(), msg);
+        PlayerData playerData = msg.getPlayerDataManager().getPlayerData(player.getUniqueId());
 
         if (playerData.hasIgnored(target.getUniqueId())) {
             player.sendMessage(msg.getConfigData().getFormatedMessage("you_ignored_receiver", player, "%targetName%", target.getName()));
             return false;
         }
 
-        PlayerData targetData = PlayerData.getPlayerData(target.getUniqueId(), msg);
+        PlayerData targetData = msg.getPlayerDataManager().getPlayerData(target.getUniqueId());
 
         if (targetData.isDeactivated()) {
             player.sendMessage(msg.getConfigData().getFormatedMessage("receiver_deactivated", player, "%targetName%", target.getName()));
