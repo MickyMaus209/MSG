@@ -8,15 +8,13 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class MySQLData implements Data {
-    private final Msg msg;
     private final CustomFile file;
     private static final String FILE_NAME = "mysql.yml";
     private final Map<String, Object> data;
     private boolean isEnabled;
-    private String host, port, username, password;
+    private String host, port, username, password, db;
 
     public MySQLData(Msg msg) {
-        this.msg = msg;
         file = new CustomFile(msg, FILE_NAME, this);
         file.setup();
         data = new HashMap<>();
@@ -31,6 +29,7 @@ public class MySQLData implements Data {
         defaultData.put("enabled", false);
         defaultData.put("host", "localhost");
         defaultData.put("port", "3306");
+        defaultData.put("db", "MSG");
         defaultData.put("username", "admin");
         defaultData.put("password", "123456");
 
@@ -54,6 +53,7 @@ public class MySQLData implements Data {
         port = (String) getData("port");
         username = (String) getData("username");
         password = (String) getData("password");
+        db = (String) getData("db");
     }
 
     /**
@@ -88,5 +88,9 @@ public class MySQLData implements Data {
 
     public String getUsername() {
         return username;
+    }
+
+    public String getDB() {
+        return db;
     }
 }

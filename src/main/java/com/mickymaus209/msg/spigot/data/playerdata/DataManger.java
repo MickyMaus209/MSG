@@ -20,4 +20,5 @@ public abstract class DataManger {
     public abstract PlayerData getPlayerData(UUID uuid);
     public abstract void reloadAllPlayerData();
     public abstract void saveAllPlayerData();
+    public abstract void stop();
 }

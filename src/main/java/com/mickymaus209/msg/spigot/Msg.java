@@ -49,6 +49,7 @@ public class Msg extends JavaPlugin {
     @Override
     public void onDisable() {
         Utils.sendStartStopMessage(this);
+        System.out.println(playerDataManager);
         playerDataManager.saveAllPlayerData();
     }
 

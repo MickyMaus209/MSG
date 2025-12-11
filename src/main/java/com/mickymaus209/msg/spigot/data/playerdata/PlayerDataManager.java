@@ -34,7 +34,8 @@ public class PlayerDataManager {
         String port = mySQLData.getPort();
         String username = mySQLData.getUsername();
         String password = mySQLData.getPassword();
-        mySQLManager = new MySQLManager(host, port, username, password);
+        String db = mySQLData.getDB();
+        mySQLManager = new MySQLManager(host, port, username, password, db);
         mySQLManager.createTablesAsync();
     }
 
@@ -44,6 +45,10 @@ public class PlayerDataManager {
 
     public void reloadAllPlayerData() {
         currentDataMethod.reloadAllPlayerData();
+    }
+
+    public void shutdown(){
+        currentDataMethod.stop();
     }
 
     public void saveAllPlayerData() {

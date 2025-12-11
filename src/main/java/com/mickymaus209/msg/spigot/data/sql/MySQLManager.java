@@ -18,9 +18,9 @@ public class MySQLManager {
         return t;
     });
 
-    public MySQLManager(String host, String port, String username, String password) {
+    public MySQLManager(String host, String port, String username, String password, String db) {
         HikariConfig cfg = new HikariConfig();
-        cfg.setJdbcUrl("jdbc:mysql://" + host + ":" + port + "/mcdb"
+        cfg.setJdbcUrl("jdbc:mysql://" + host + ":" + port + "/" + db
                 + "?useUnicode=true&characterEncoding=utf8"
                 + "&serverTimezone=UTC"
                 + "&cachePrepStmts=true&prepStmtCacheSize=250&prepStmtCacheSqlLimit=2048"
@@ -35,7 +35,6 @@ public class MySQLManager {
         cfg.setValidationTimeout(3000);
         cfg.setIdleTimeout(600000);        // 10 min
         cfg.setMaxLifetime(1700000);       // 28m20s (< MySQL default 30m)
-        cfg.setKeepaliveTime(300000);      // 5 min ping
 
         cfg.setPoolName("Msg-Hikari");
 
@@ -49,6 +48,7 @@ public class MySQLManager {
                         "uuid CHAR(36) NOT NULL," +
                         "deactivated BOOLEAN NOT NULL DEFAULT FALSE," +
                         "PRIMARY KEY (uuid))");
+
 
                 stmt.executeUpdate("CREATE TABLE IF NOT EXISTS player_blocks (" +
                         "player_uuid CHAR(36) NOT NULL," +

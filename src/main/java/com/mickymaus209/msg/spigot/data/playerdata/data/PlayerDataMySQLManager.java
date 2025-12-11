@@ -31,4 +31,9 @@ public class PlayerDataMySQLManager extends DataManger {
     public void saveAllPlayerData() {
         DATA.values().forEach(PlayerDataMySQL::savePlayerData);
     }
+
+    @Override
+    public void stop() {
+        msg.getPlayerDataManager().getMySQLManager().close();
+    }
 }

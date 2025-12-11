@@ -25,7 +25,7 @@ dependencies {
     implementation("com.google.code.gson:gson:2.10.1")
     implementation("org.bstats:bstats-bukkit:3.0.0")
     implementation("org.bstats:bstats-bungeecord:3.0.0")
-    implementation("com.zaxxer:HikariCP:5.1.0")
+    implementation("com.zaxxer:HikariCP:3.4.5")
     implementation("com.mysql:mysql-connector-j:8.4.0")
 }
 

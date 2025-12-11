@@ -31,4 +31,9 @@ public class PlayerDataConfigManager extends DataManger {
     public void saveAllPlayerData() {
         DATA.values().forEach(PlayerDataConfig::savePlayerData);
     }
+
+    @Override
+    public void stop() {
+
+    }
 }

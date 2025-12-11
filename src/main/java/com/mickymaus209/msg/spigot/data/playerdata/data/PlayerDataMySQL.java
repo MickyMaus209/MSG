@@ -7,8 +7,6 @@ import com.mickymaus209.msg.spigot.data.sql.MySQLManager;
 import java.sql.*;
 import java.util.*;
 import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.concurrent.Executors;
 
 public class PlayerDataMySQL extends PlayerData {
     private final UUID uuid;
@@ -84,17 +82,16 @@ public class PlayerDataMySQL extends PlayerData {
                     del.executeUpdate();
                 }
 
-                if (ignoredPlayers.isEmpty())
-                    return;
-
-                try (PreparedStatement ins = conn.prepareStatement(
-                        "INSERT INTO player_blocks (player_uuid, blocked_uuid) VALUES (?, ?)")) {
-                    for (UUID blocked : ignoredPlayers) {
-                        ins.setString(1, uuid.toString());
-                        ins.setString(2, blocked.toString());
-                        ins.addBatch();
+                if (!ignoredPlayers.isEmpty()) {
+                    try (PreparedStatement ins = conn.prepareStatement(
+                            "INSERT INTO player_blocks (player_uuid, blocked_uuid) VALUES (?, ?)")) {
+                        for (UUID blocked : ignoredPlayers) {
+                            ins.setString(1, uuid.toString());
+                            ins.setString(2, blocked.toString());
+                            ins.addBatch();
+                        }
+                        ins.executeBatch();
                     }
-                    ins.executeBatch();
                 }
                 conn.commit();
             } catch (
